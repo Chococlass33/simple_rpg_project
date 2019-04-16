@@ -17,3 +17,6 @@ The idea of status effects is to create tempoary effects on a character. The sta
 . For example a player afflicted with stun will be incapable of performing actions until the effect wears off. Each time the status effect is triggered it will reduce a counter of turns remaining. 
 This isn't the only way to implement a stun effect. I chose this way because it allow for furture extension of the status system. We could add healing buffs or damage buffs later down the line fairly easily through
 this status effect interface. The engine doesn't really have a system in place for non-damage item actions.
+
+## Stunning and Insults, One action only per turn.
+We have decided that if an actor were to make an insult or a stun action as part of their behavior, it would be their one action for the turn. If we had made the choice to allow a movement action alongside the insult or stun, that would require quite a few changes to implement multiple actions per actor per turn. To keep things simple, when the world calls for an action from an actor, only 1 action will be taken.
