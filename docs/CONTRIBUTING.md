@@ -46,6 +46,7 @@ Unexpected events may result in a slightly different distribution. Any major dep
 * LockedDoorAction Class
 * PlacePartAction
 * UnlockedDoorAction
+* LoopingController
 
 ### Planned Work Assignment
 #### Lawson
@@ -60,6 +61,7 @@ Unexpected events may result in a slightly different distribution. Any major dep
 * Goon Class
 * Grunt Class
 * DoctorMaybe Class
+* LoopingController Class
 * Validating other classes
 
 #### Chee
