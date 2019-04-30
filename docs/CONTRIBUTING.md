@@ -21,3 +21,57 @@ Unexpected events may result in a slightly different distribution. Any major dep
 
 ### Major Changes to Work Assignment
 * None
+
+## Assignment 2
+### Deliverables
+* Character Class
+* StunEffect Class
+* StunStatus Class
+* StunAction Class
+* StunBehaviour Class
+* RetreatBehaviour Class
+* InsultBehaviour Class
+* WanderingBehaviour Class
+* TalkAction Class
+* GivePlansAction Class
+* Ninja Class
+* Goon Class
+* Grunt Class
+* Q Class
+* DoctorMaybe Class
+* Player Class
+* Door Class
+* Key Class
+* RocketPad Class
+* LockedDoorAction Class
+* PlacePartAction
+* UnlockedDoorAction
+
+### Planned Work Assignment
+#### Lawson
+* Character Class
+* StunEffect Class
+* StunStatus Class
+* StunAction Class
+* StunBehaviour Class
+* RetreatBehaviour Class
+* InsultBehaviour Class
+* Ninja Class
+* Goon Class
+* Grunt Class
+* DoctorMaybe Class
+* Validating other classes
+
+#### Chee
+* Door Class
+* Key Class
+* RocketPad Class
+* LockedDoorAction Class
+* PlacePartAction
+* UnlockedDoorAction
+* Q Class
+* WanderingBehaviour Class
+* TalkAction Class
+* GivePlansAction Class
+* Player Class
+* Validating other classes
