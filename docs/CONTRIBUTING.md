@@ -23,7 +23,8 @@ Unexpected events may result in a slightly different distribution. Any major dep
 * None
 
 ## Assignment 2
-### Deliverables
+### Planned Deliverables
+Planned deliverables are classes designed and identified in Assignment 1. It's possible the specific classes may change if better implementations are found during work. Any deviantions in deliverables will be noted at the bottom of the WBA for assignment 2
 * Character Class
 * StunEffect Class
 * StunStatus Class
@@ -48,7 +49,7 @@ Unexpected events may result in a slightly different distribution. Any major dep
 * UnlockedDoorAction
 
 ### Planned Work Assignment
-#### Lawson
+#### Lawson. All planned work must be completed by 07/05/2019
 * Character Class
 * StunEffect Class
 * StunStatus Class
@@ -62,7 +63,7 @@ Unexpected events may result in a slightly different distribution. Any major dep
 * DoctorMaybe Class
 * Validating other classes
 
-#### Chee
+#### Chee. All planned work must be completed by 07/05/2019
 * Door Class
 * Key Class
 * RocketPad Class
@@ -75,3 +76,9 @@ Unexpected events may result in a slightly different distribution. Any major dep
 * GivePlansAction Class
 * Player Class
 * Validating other classes
+
+
+### Agreement
+I Lawson Meulman declare that I believe the above WBA for assignment 2 represents an acceptable split of work.
+
+### Deviations from original WBA
