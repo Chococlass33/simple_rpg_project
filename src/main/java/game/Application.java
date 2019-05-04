@@ -19,7 +19,7 @@ public class Application{
 		System.setProperty("log4j.configuration","log4j2.xml");
 		Logger logger = LogManager.getLogger(Application.class);
 		logger.info("Starting game");
-		World world = new World(new Display());
+		World world = new World(new LogDisplay());
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall());
 		GameMap gameMap;
