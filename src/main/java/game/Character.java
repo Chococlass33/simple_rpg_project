@@ -1,7 +1,11 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -9,11 +13,16 @@ import java.util.Optional;
  */
 public class Character extends Actor {
 
+    private Logger logger = LogManager.getLogger(this.getClass());
+
     // Intrinsic damage
     private int intDamage;
 
     // Character controller
     private Controller characterController;
+
+    // Status effects on the character
+    private List<StatusEffect> statusEffects = new ArrayList<>();
 
     /**
      * Constructor for character
@@ -73,11 +82,47 @@ public class Character extends Actor {
     @Override
     public Action playTurn(Actions actions, GameMap map, Display display) {
 
+        // Apply status effects
+        Optional<Action> action = executeStatusEffects();
+
+        if (action.isPresent()) {
+            // If the status effect has an action. Force the character to perform the action.
+            logger.debug("Character: {} | Forced Action: {}", getName(), action.get().getClass().getSimpleName());
+            return action.get();
+        }
+
         // Get the character's action from the controller
-        Optional<Action> action = characterController.selectedAction(this, actions, map, display);
+        action = characterController.selectedAction(this, actions, map, display);
 
         // Return the action or skip the turn if no action is provided
         return action.orElseGet(() -> super.playTurn(actions, map, display));
+    }
+
+    /**
+     * Run all the status effects on the character. If multiple status effects return actions return the last one.
+     * @return Optional action.
+     */
+    private Optional<Action> executeStatusEffects() {
+
+        Optional<Action> statusAction = Optional.empty();
+
+        for (StatusEffect effect : statusEffects) {
+            Optional<Action> tempAction = effect.performStatusEffect(this);
+            if (tempAction.isPresent()) {
+                statusAction = tempAction;
+            }
+        }
+
+        return statusAction;
+    }
+
+    /**
+     * Add a status effect to the character
+     * @param status The status effect to add
+     */
+    void addStatusEffect(StatusEffect status) {
+        logger.debug("Character: {} | Status effect applied: {}", getName(), status.getClass().getSimpleName());
+        statusEffects.add(status);
     }
 
 }
