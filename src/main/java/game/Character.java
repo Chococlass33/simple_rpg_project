@@ -77,7 +77,7 @@ public class Character extends Actor {
         Optional<Action> action = characterController.selectedAction(this, actions, map, display);
 
         // Return the action or skip the turn if no action is provided
-        return action.orElse(new SkipTurnAction());
+        return action.orElseGet(() -> super.playTurn(actions, map, display));
     }
 
 }
