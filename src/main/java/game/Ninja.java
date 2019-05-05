@@ -1,7 +1,7 @@
 package game;
 
 /**
- * A Ninja. Will either stun the player or retreat
+ * A Ninja. Will attempt to maintain a minimum distance from the target. If cornered will attempt to stun the target.
  */
 public class Ninja extends Character {
 

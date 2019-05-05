@@ -38,11 +38,13 @@ public class Application{
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
 		Actor player = new Player("Player", '@', 1, 100);
-		world.addPlayer(player, gameMap, 2, 2);
+		world.addPlayer(player, gameMap, 1, 1);
 		Grunt grunt = new Grunt("Mongo", player);
-		gameMap.addActor(grunt, 0, 0);
+		gameMap.addActor(grunt, 0, 1);
 		Grunt grunt2 = new Grunt("Norbert", player);
-		gameMap.addActor(grunt2,  10, 10);
+		gameMap.addActor(grunt2,  1, 0);
+		Ninja ninja = new Ninja("Billy", grunt); // TODO Ninja can only target characters not actors. to target the player we need player to be a subclass of character
+		gameMap.addActor(ninja, 0, 0);
 		world.run();
 	}
 }
