@@ -146,4 +146,21 @@ public class Character extends Actor {
         statusEffects.add(status);
     }
 
+    /**
+     * Return the names of every active status effect the character is afflicted with.
+     * @return List of status effect names
+     */
+    List<String> getStatusEffects() {
+
+        List<String> statusNames = new ArrayList<>();
+
+        for (StatusEffect effect : statusEffects) {
+            if (!effect.isExpired()) {
+                statusNames.add(effect.getEffectName());
+            }
+        }
+
+        return statusNames;
+    }
+
 }

@@ -9,12 +9,14 @@ import java.util.Optional;
  */
 public class StunStatus extends StatusEffect {
 
+    public static final String STUN_STATUS = "Stun Status";
+
     /**
      * Create a stun status
      * @param duration How long the status will last
      */
     public StunStatus(int duration) {
-        super(duration, "Stun Status");
+        super(duration, STUN_STATUS);
     }
 
     /**
