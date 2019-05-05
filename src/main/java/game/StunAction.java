@@ -6,6 +6,9 @@ import edu.monash.fit2099.engine.GameMap;
 
 import java.util.Random;
 
+/**
+ * Stun another character
+ */
 public class StunAction extends Action {
 
     private Character subject;
