@@ -47,6 +47,8 @@ public class Application{
 		gameMap.addActor(ninja, 0, 0);
 		Goon goon = new Goon("Valerie", player);
 		gameMap.addActor(goon, 9, 10);
+		DoctorMaybe doctor = new DoctorMaybe("Doctor Maybe");
+		gameMap.addActor(doctor, 2, 10);
 		world.run();
 	}
 }
