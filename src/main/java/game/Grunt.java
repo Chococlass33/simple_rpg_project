@@ -11,7 +11,7 @@ public class Grunt extends Character {
 	 * @param player Player character
 	 */
 	public Grunt(String name, Actor player) {
-		super(new LoopingController(new FollowBehaviour(player)), name, 'g', 5, 50);
+		super(new LoopingController(new FollowBehaviour(player)), name, DisplayCharacters.GRUNT, 5, 50);
 	}
 
 }

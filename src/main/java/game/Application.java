@@ -45,6 +45,8 @@ public class Application{
 		gameMap.addActor(grunt2,  10, 10);
 		Ninja ninja = new Ninja("Billy", grunt); // TODO Ninja can only target characters not actors. to target the player we need player to be a subclass of character
 		gameMap.addActor(ninja, 0, 0);
+		Goon goon = new Goon("Valerie", player);
+		gameMap.addActor(goon, 9, 10);
 		world.run();
 	}
 }
