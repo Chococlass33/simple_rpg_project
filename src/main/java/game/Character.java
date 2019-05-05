@@ -83,6 +83,7 @@ public class Character extends Actor {
     public Action playTurn(Actions actions, GameMap map, Display display) {
 
         // Apply status effects
+        clearExpiredStatusEffects();
         Optional<Action> action = executeStatusEffects();
 
         if (action.isPresent()) {
@@ -117,11 +118,31 @@ public class Character extends Actor {
     }
 
     /**
+     * Clear any expired status effects from the character.
+     */
+    private void clearExpiredStatusEffects() {
+
+        List<StatusEffect> validEffects = new ArrayList<>();
+
+        // Check for expired status effects
+        for (StatusEffect effect : statusEffects) {
+            if (effect.isExpired()) {
+                logger.debug("Character: {} | Status effect expired: {}", getName(), effect.getEffectName());
+            } else {
+                validEffects.add(effect);
+            }
+        }
+
+        // Set the character to only contain valid status effects
+        statusEffects = validEffects;
+    }
+
+    /**
      * Add a status effect to the character
      * @param status The status effect to add
      */
     void addStatusEffect(StatusEffect status) {
-        logger.debug("Character: {} | Status effect applied: {}", getName(), status.getClass().getSimpleName());
+        logger.debug("Character: {} | Status effect applied: {}", getName(), status.getEffectName());
         statusEffects.add(status);
     }
 

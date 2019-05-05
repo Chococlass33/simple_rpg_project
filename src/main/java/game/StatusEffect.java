@@ -40,14 +40,30 @@ public abstract class StatusEffect {
      * @param subject The subject of the status effect
      * @return An optional action.
      */
-    public Optional<Action> performStatusEffect(Character subject) {
+    Optional<Action> performStatusEffect(Character subject) {
         effectDuration -= 1;
-        if (effectDuration >= 0) {
+        if (!isExpired()) {
             logger.debug("Character: {} | Status : {} | Executed status effect", subject.getName(), effectName);
             return executeEffect(subject);
         } else {
             logger.debug("Character: {} | Status : {} | Has expired", subject.getName(), effectName);
             return Optional.empty();
         }
+    }
+
+    /**
+     * Check if the status effect has expired
+     * @return True if expired false if still active
+     */
+    boolean isExpired() {
+        return effectDuration < 0;
+    }
+
+    /**
+     * Get the name of the status effect
+     * @return The effect name
+     */
+    String getEffectName() {
+        return effectName;
     }
 }
