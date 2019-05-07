@@ -95,3 +95,4 @@ I, Lawson Meulman declare that I believe the above WBA for assignment 2 represen
     * StandStillBehaviour.class
     * InsultAction.class
     * RocketPlans.class
+    * DisplayCharacter.class
