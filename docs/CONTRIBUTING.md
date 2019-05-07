@@ -47,6 +47,7 @@ Planned deliverables are classes designed and identified in Assignment 1. It's p
 * LockedDoorAction Class
 * PlacePartAction
 * UnlockedDoorAction
+* LoopingController
 
 ### Planned Work Assignment
 #### Lawson. All planned work must be completed by 07/05/2019
@@ -61,6 +62,7 @@ Planned deliverables are classes designed and identified in Assignment 1. It's p
 * Goon Class
 * Grunt Class
 * DoctorMaybe Class
+* LoopingController Class
 * Validating other classes
 
 #### Chee. All planned work must be completed by 07/05/2019
