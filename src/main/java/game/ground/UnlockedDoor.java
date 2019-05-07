@@ -1,23 +1,25 @@
-package game;
+package game.ground;
 
 import edu.monash.fit2099.engine.*;
+import game.DisplayCharacters;
+import game.actions.UnlockedDoorAction;
 
 
-public class LockedDoor extends Ground {
+public class UnlockedDoor extends Ground {
     private String color;
-    public LockedDoor(String color) {
-        super('+');
+    public UnlockedDoor(String color) {
+        super(DisplayCharacters.UNLOCKED_DOOR);
         this.color = color;
 
     }
     @Override
     public boolean canActorEnter(Actor actor) {
-        return false;
+        return true;
     }
 
     @Override
     public Actions allowableActions(Actor actor, Location location, String direction){
-        return new Actions(new LockDoorAction(location, color,false));
+        return new Actions(new UnlockedDoorAction(location,color,true));
     }
 
     @Override

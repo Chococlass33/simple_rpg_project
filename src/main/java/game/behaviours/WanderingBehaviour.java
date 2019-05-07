@@ -1,6 +1,8 @@
-package game;
+package game.behaviours;
 
 import edu.monash.fit2099.engine.*;
+import game.behaviours.ActionFactory;
+
 import java.util.Random;
 public class WanderingBehaviour implements ActionFactory {
     private Random rand = new Random();

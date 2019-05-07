@@ -1,6 +1,7 @@
-package game;
+package game.Items;
 
 import edu.monash.fit2099.engine.Item;
+import game.*;
 
 /**
  * Quest Item. Plans for the rocket.

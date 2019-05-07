@@ -1,12 +1,15 @@
-package game;
+package game.actions;
 
 import edu.monash.fit2099.engine.*;
+import game.Items.RocketBody;
+import game.Items.RocketEngine;
+import game.ground.RocketPad;
 
-public class PutItems extends Action {
+public class PlacePartAction extends Action {
     private Location location;
     private boolean hasbody;
     private boolean hasengine;
-    public PutItems(Location location, boolean hasBody, boolean hasEngine) {
+    public PlacePartAction(Location location, boolean hasBody, boolean hasEngine) {
         this.location = location;
         this.hasbody = hasBody;
         this.hasengine = hasEngine;
@@ -19,10 +22,10 @@ public class PutItems extends Action {
         if(!hasbody)
         {
             tempstring += "You notice the body is missing.\n";
-            if(actor.getInventory().contains(new Item("Rocket Body", '$')))
+            if(actor.getInventory().contains(new RocketBody()))
             {
                 putbody = true;
-                actor.getInventory().remove(new Item("Rocket Body", '$'));
+                actor.getInventory().remove(new RocketBody());
                 tempstring += "You attach the body to the launchpad.\n";
             }
             else
@@ -33,10 +36,10 @@ public class PutItems extends Action {
         if(!hasengine)
         {
             tempstring += "You notice the engine is missing.\n";
-            if(actor.getInventory().contains(new Item("Rocket Engine", '^')))
+            if(actor.getInventory().contains(new RocketEngine()))
             {
                 putengine = true;
-                actor.getInventory().remove(new Item("Rocket Engine", '^'));
+                actor.getInventory().remove(new RocketEngine());
                 tempstring += "You attach the engine to the launchpad.\n";
             }
             else

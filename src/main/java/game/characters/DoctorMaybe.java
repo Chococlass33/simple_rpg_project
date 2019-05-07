@@ -1,7 +1,7 @@
 package game.characters;
 
 import game.DisplayCharacters;
-import game.RocketPlans;
+import game.Items.RocketPlans;
 import game.behaviours.StandStillBehaviour;
 import game.controllers.LoopingController;
 

@@ -1,12 +1,12 @@
-package game;
+package game.actions;
 
 import edu.monash.fit2099.engine.*;
 
-public class checkPad extends Action {
+public class CheckPadAction extends Action {
     private Location location;
     private boolean hasbody;
     private boolean hasengine;
-    public checkPad(Location location, boolean hasBody, boolean hasEngine) {
+    public CheckPadAction(Location location, boolean hasBody, boolean hasEngine) {
         this.location = location;
         this.hasbody = hasBody;
         this.hasengine = hasEngine;

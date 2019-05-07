@@ -23,7 +23,7 @@ public class EmptyController implements Controller {
      * @param display the I/O object to which messages may be written
      * @return Action to be performed.
      */
-    public Optional<Action> selectedAction(Character subject, Actions actions, GameMap map, Display display) {
+    public Action selectedAction(Character subject, Actions actions, GameMap map, Display display) {
         logger.debug("Character: {}, selected no action", subject.getName());
         return Optional.empty();
     }
