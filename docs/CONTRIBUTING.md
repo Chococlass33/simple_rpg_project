@@ -79,6 +79,19 @@ Planned deliverables are classes designed and identified in Assignment 1. It's p
 
 
 ### Agreement
-I Lawson Meulman declare that I believe the above WBA for assignment 2 represents an acceptable split of work.
+I, Lawson Meulman declare that I believe the above WBA for assignment 2 represents an acceptable split of work.
 
 ### Deviations from original WBA
+#### Lawson
+* Updates to design
+    * Split decision making from character class into the controller interface.
+    * Changed how the Stun feautre would be implemented
+* Additional classes built not within original WBA
+    * Controller.class
+    * LoopingController.class
+    * EmptyController.class
+    * StunnedAction.class
+    * LogDisplay.class
+    * StandStillBehaviour.class
+    * InsultAction.class
+    * RocketPlans.class
