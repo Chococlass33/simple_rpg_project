@@ -17,7 +17,7 @@ Initially each Actor subclass would override play turn to include its own decisi
 
 
 ## Status Effects
-The idea of status effects is to create tempoary effects on a character. The status effect is an abstract class that will be extended by subclasses. Status effects will be triggered as part of the characters turn.
+The idea of status effects is to create temporary effects on a character. The status effect is an abstract class that will be extended by subclasses. Status effects will be triggered as part of the characters turn.
 Status effects will have two designed use cases.
 *  They can change the character the are affecting in some way. For instance a status effect could increase character damage until its effect wears off.
 *  They can return an action. A character will be forced to perform that action from the status effect and will be unable to select their own action for that turn.
