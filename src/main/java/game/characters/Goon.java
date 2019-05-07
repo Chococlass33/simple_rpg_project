@@ -1,6 +1,10 @@
-package game;
+package game.characters;
 
 import edu.monash.fit2099.engine.Actor;
+import game.DisplayCharacters;
+import game.behaviours.InsultBehaviour;
+import game.behaviours.FollowBehaviour;
+import game.controllers.LoopingController;
 
 /**
  * More powerful grunt. Can also insult another character.

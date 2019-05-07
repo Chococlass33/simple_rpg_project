@@ -1,6 +1,7 @@
-package game;
+package game.status;
 
 import edu.monash.fit2099.engine.Action;
+import game.characters.Character;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,7 +41,7 @@ public abstract class StatusEffect {
      * @param subject The subject of the status effect
      * @return An optional action.
      */
-    Optional<Action> performStatusEffect(Character subject) {
+    public Optional<Action> performStatusEffect(Character subject) {
         effectDuration -= 1;
         if (!isExpired()) {
             logger.debug("Character: {} | Status : {} | Executed status effect", subject.getName(), effectName);
@@ -55,7 +56,7 @@ public abstract class StatusEffect {
      * Check if the status effect has expired
      * @return True if expired false if still active
      */
-    boolean isExpired() {
+    public boolean isExpired() {
         return effectDuration < 0;
     }
 
@@ -63,7 +64,7 @@ public abstract class StatusEffect {
      * Get the name of the status effect
      * @return The effect name
      */
-    String getEffectName() {
+    public String getEffectName() {
         return effectName;
     }
 }

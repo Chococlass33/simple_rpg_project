@@ -1,6 +1,8 @@
-package game;
+package game.characters;
 
 import edu.monash.fit2099.engine.*;
+import game.status.StatusEffect;
+import game.controllers.Controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -141,7 +143,7 @@ public class Character extends Actor {
      * Add a status effect to the character
      * @param status The status effect to add
      */
-    void addStatusEffect(StatusEffect status) {
+    public void addStatusEffect(StatusEffect status) {
         logger.debug("Character: {} | Status effect applied: {}", getName(), status.getEffectName());
         statusEffects.add(status);
     }
@@ -150,7 +152,7 @@ public class Character extends Actor {
      * Return the names of every active status effect the character is afflicted with.
      * @return List of status effect names
      */
-    List<String> getStatusEffects() {
+    public List<String> getStatusEffects() {
 
         List<String> statusNames = new ArrayList<>();
 
@@ -167,7 +169,7 @@ public class Character extends Actor {
      * This method adds an item to the character's inventory.
      * @param item Item to add to inventory
      */
-    void addToInventory(Item item) {
+    public void addToInventory(Item item) {
         logger.debug("Character: {} | Item: {} | Added to inventory", getName(), item.getClass().getSimpleName());
         inventory.add(item);
     }

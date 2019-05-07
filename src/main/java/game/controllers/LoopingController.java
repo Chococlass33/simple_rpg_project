@@ -1,9 +1,11 @@
-package game;
+package game.controllers;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
+import game.characters.Character;
+import game.behaviours.ActionFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,7 +28,7 @@ public class LoopingController implements Controller {
      * Create a looping controller with a list of acceptable behaviours
      * @param behaviours Acceptable behaviours
      */
-    LoopingController(ActionFactory... behaviours) {
+    public LoopingController(ActionFactory... behaviours) {
         actionFactories.addAll(Arrays.asList(behaviours));
     }
 

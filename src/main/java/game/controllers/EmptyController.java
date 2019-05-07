@@ -1,9 +1,10 @@
-package game;
+package game.controllers;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
+import game.characters.Character;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

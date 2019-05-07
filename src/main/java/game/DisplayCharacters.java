@@ -3,7 +3,7 @@ package game;
 /**
  * Class to keep track of which display characters have been assigned to which entity.
  */
-class DisplayCharacters {
+public class DisplayCharacters {
 
     private DisplayCharacters() {}
 

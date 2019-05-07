@@ -1,7 +1,9 @@
-package game;
+package game.characters;
 
 import edu.monash.fit2099.engine.*;
-
+import game.DisplayCharacters;
+import game.behaviours.FollowBehaviour;
+import game.controllers.LoopingController;
 
 public class Grunt extends Character {
 

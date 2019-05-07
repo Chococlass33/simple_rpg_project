@@ -8,6 +8,10 @@ import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Player;
 import edu.monash.fit2099.engine.World;
+import game.characters.DoctorMaybe;
+import game.characters.Goon;
+import game.characters.Grunt;
+import game.characters.Ninja;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,6 +1,8 @@
-package game;
+package game.status;
 
 import edu.monash.fit2099.engine.Action;
+import game.actions.StunnedAction;
+import game.characters.Character;
 
 import java.util.Optional;
 

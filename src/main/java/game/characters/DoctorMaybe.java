@@ -1,4 +1,9 @@
-package game;
+package game.characters;
+
+import game.DisplayCharacters;
+import game.RocketPlans;
+import game.behaviours.StandStillBehaviour;
+import game.controllers.LoopingController;
 
 /**
  * Doctor maybe miniboss. Drop rocket plans on death.

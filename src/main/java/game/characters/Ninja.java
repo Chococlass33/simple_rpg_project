@@ -1,4 +1,10 @@
-package game;
+package game.characters;
+
+import game.DisplayCharacters;
+import game.behaviours.RetreatBehaviour;
+import game.behaviours.StandStillBehaviour;
+import game.behaviours.StunBehaviour;
+import game.controllers.LoopingController;
 
 /**
  * A Ninja. Will attempt to maintain a minimum distance from the target. If cornered will attempt to stun the target.
