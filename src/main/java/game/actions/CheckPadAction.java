@@ -1,17 +1,32 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
-
+/**
+ * The actor inspects the rocket
+ */
 public class CheckPadAction extends Action {
     private Location location;
     private boolean hasbody;
     private boolean hasengine;
+    /**
+     * Construct a CheckPad action
+     *
+     * @param location Location of the rocket pad.
+     * @param hasBody Boolean representing the status of the rocket body.
+     * @param hasEngine Boolean representing the status of the rocket engine.
+     */
     public CheckPadAction(Location location, boolean hasBody, boolean hasEngine) {
         this.location = location;
         this.hasbody = hasBody;
         this.hasengine = hasEngine;
     }
-
+    /**
+     * An actor checks the rocket pad.
+     *
+     * @param actor The actor performing the action.
+     * @param map   The map the actor is on.
+     * @return A description of the action's outcome.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         String tempstring = "You look at the pad.\n";
@@ -34,11 +49,22 @@ public class CheckPadAction extends Action {
         return tempstring;
     }
 
+    /**
+     * How the action is described in a menu.
+     *
+     * @param actor The actor performing the action.
+     * @return String of action desciption.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + "checks the rocket pad.";
     }
 
+    /**
+     * Action hotkey.
+     *
+     * @return Return empty string. No dedicated hot key.
+     */
     @Override
     public String hotKey() {
         return "";

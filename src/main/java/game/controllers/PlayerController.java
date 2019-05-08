@@ -12,10 +12,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 
+/**
+ * The Player controller allows the player to make actions from the menu, selected from currently available actions.
+ */
 public class PlayerController implements Controller {
     private Logger logger = LogManager.getLogger(this.getClass());
 
 
+    /**
+     * Iterate through possible actions and return the action selected by the player
+     * @param subject The character to perform the action, usually the player
+     * @param actions collection of possible Actions for this Actor
+     * @param map the map containing the Actor
+     * @param display the I/O object to which messages may be written
+     * @return Action to be performed.
+     */
     @Override
     public Optional<Action> selectedAction(Character subject, Actions actions, GameMap map, Display display) {
         ArrayList<java.lang.Character> freeChars = new ArrayList<java.lang.Character>();

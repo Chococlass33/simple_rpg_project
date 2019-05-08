@@ -6,8 +6,14 @@ import game.actions.GivePlansAction;
 import game.behaviours.WanderingBehaviour;
 import game.actions.TalkAction;
 import game.controllers.LoopingController;
-
+/**
+ * An NPC called Q. Will wander and give the Talk action and GivePlans action to nearby actors.
+ */
 public class Q extends Character{
+    /**
+     * Construct a Q.
+     *
+     */
     public Q() {
         super(new LoopingController(new WanderingBehaviour()), "Q", DisplayCharacters.Q, 4, 9999);
     }

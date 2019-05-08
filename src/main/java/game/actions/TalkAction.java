@@ -4,15 +4,28 @@ import edu.monash.fit2099.engine.*;
 import game.Items.RocketPlans;
 
 import java.util.List;
-
+/**
+ * The actor talks to a giver of a conversation.
+ */
 public class TalkAction extends Action {
 
     private Actor giver;
-
+    /**
+     * Construct a Talk action
+     *
+     * @param giver Actor to give talk to.
+     */
     public TalkAction(Actor giver)
     {
         this.giver = giver;
     }
+    /**
+     * An actor talks to a giver, Q
+     *
+     * @param actor The actor performing the action.
+     * @param map   The map the actor is on.
+     * @return A description of the action's outcome.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         List<Item> inventory = actor.getInventory();
@@ -28,11 +41,22 @@ public class TalkAction extends Action {
         return tempstring;
     }
 
+    /**
+     * How the action is described in a menu.
+     *
+     * @param actor The actor performing the action.
+     * @return String of action desciption.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + "talks to " + giver;
     }
 
+    /**
+     * Action hotkey.
+     *
+     * @return Return empty string. No dedicated hot key.
+     */
     @Override
     public String hotKey() {
         return "";
