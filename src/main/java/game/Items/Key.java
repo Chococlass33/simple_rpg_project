@@ -8,5 +8,8 @@ public class Key extends Item {
         super(DisplayCharacters.COLORS[keyCount %10] + " Key", DisplayCharacters.KEY);
         keyCount++;
     }
+    public Key(String color) {
+        super(color + " Key", DisplayCharacters.KEY);
+    }
 
 }
