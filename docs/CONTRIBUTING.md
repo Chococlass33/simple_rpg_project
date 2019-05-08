@@ -82,6 +82,7 @@ Planned deliverables are classes designed and identified in Assignment 1. It's p
 
 ### Agreement
 I, Lawson Meulman declare that I believe the above WBA for assignment 2 represents an acceptable split of work.
+
 I, Chee Chin Chan declare that I believe the above WBA for assignment 2 represents an acceptable split of work.
 
 ### Deviations from original WBA
@@ -89,7 +90,8 @@ I, Chee Chin Chan declare that I believe the above WBA for assignment 2 represen
 * Updates to design
     * Split the Door into a LockedDoor and an UnlockedDoor for simplicity.
     * Added a Warhammer to add weapon functionality and have a purpose for multi-coloured doors.
-    * Added a Talk action along with the GivePlansAction, as was required in the specifications
+    * Added a Talk action along with the GivePlansAction, as was required in the specifications.
+    * Added color functionality to Doors and Keys. If generated without paramemters, they will automatically create a new color corresponding to the count of Keys/Doors created.
 * Additional classes built not within original WBA
     * PlayerController.class
     * UnlockedDoor.class
