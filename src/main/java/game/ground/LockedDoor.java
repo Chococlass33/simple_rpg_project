@@ -7,10 +7,14 @@ import game.actions.UnlockedDoorAction;
 
 public class LockedDoor extends Ground {
     private String color;
+    public LockedDoor() {
+        super(DisplayCharacters.LOCKED_DOOR);
+        this.color = DisplayCharacters.COLORS[DisplayCharacters.DOORCOUNT %10];
+        DisplayCharacters.DOORCOUNT++;
+    }
     public LockedDoor(String color) {
         super(DisplayCharacters.LOCKED_DOOR);
         this.color = color;
-
     }
     @Override
     public boolean canActorEnter(Actor actor) {

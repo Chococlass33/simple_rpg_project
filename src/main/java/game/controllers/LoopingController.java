@@ -40,7 +40,7 @@ public class LoopingController implements Controller {
      * @param display the I/O object to which messages may be written
      * @return Action to be performed.
      */
-    public Action selectedAction(Character subject, Actions actions, GameMap map, Display display) {
+    public Optional<Action> selectedAction(Character subject, Actions actions, GameMap map, Display display) {
         for (ActionFactory factory : actionFactories) {
             Action action = factory.getAction(subject, map);
             if(action != null) {

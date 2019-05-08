@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import game.characters.Character;
 
+import java.util.Optional;
+
 /**
  * The controller interface allows for different ways of characters being controlled.
  */
@@ -20,5 +22,5 @@ public interface Controller {
      * @param display the I/O object to which messages may be written
      * @return the Action to be performed
      */
-    Action selectedAction(Character subject, Actions actions, GameMap map, Display display);
+    Optional<Action> selectedAction(Character subject, Actions actions, GameMap map, Display display);
 }

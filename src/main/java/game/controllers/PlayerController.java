@@ -17,7 +17,7 @@ public class PlayerController implements Controller {
 
 
     @Override
-    public Action selectedAction(Character subject, Actions actions, GameMap map, Display display) {
+    public Optional<Action> selectedAction(Character subject, Actions actions, GameMap map, Display display) {
         ArrayList<java.lang.Character> freeChars = new ArrayList<java.lang.Character>();
         HashMap<java.lang.Character, Action> keyToActionMap = new HashMap<java.lang.Character, Action>();
 
@@ -52,7 +52,7 @@ public class PlayerController implements Controller {
             key = display.readChar();
         } while (!keyToActionMap.containsKey(key));
 
-        return keyToActionMap.get(key);
+        return Optional.of(keyToActionMap.get(key));
     }
 }
 
