@@ -1,19 +1,15 @@
 package game;
 
-import java.util.Arrays;
-import java.util.List;
-
-import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Player;
 import edu.monash.fit2099.engine.World;
-import game.characters.DoctorMaybe;
-import game.characters.Goon;
-import game.characters.Grunt;
-import game.characters.Ninja;
+import game.Items.Key;
+import game.characters.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class Application{
 
@@ -31,28 +27,33 @@ public class Application{
 				".#.....................",
 				"#.#.#####....######....",
 				".#..#...#....#....#....",
-				"....#........#....#....",
-				"....#####....##.###....",
+				"....#...-....#....#....",
+				"....#####....##+###....",
 				".......................",
 				".......................",
 				".......................",
-				".......................",
+				"................@......",
 				".......................",
 				".......................");
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
-		Actor player = new Player("Player", '@', 1, 100);
+		Player player = new Player("Player");
 		world.addPlayer(player, gameMap, 10, 1);
+		gameMap.addItem(new Key(), 10,2);
+		gameMap.addItem(new Key(), 10,3);
 		Grunt grunt = new Grunt("Mongo", player);
 		gameMap.addActor(grunt, 1, 1);
 		Grunt grunt2 = new Grunt("Norbert", player);
 		gameMap.addActor(grunt2,  10, 10);
-		Ninja ninja = new Ninja("Billy", grunt); // TODO Ninja can only target characters not actors. to target the player we need player to be a subclass of character
+		Ninja ninja = new Ninja("Billy", player); // TODO Ninja can only target characters not actors. to target the player we need player to be a subclass of character
 		gameMap.addActor(ninja, 0, 0);
 		Goon goon = new Goon("Valerie", player);
 		gameMap.addActor(goon, 9, 10);
 		DoctorMaybe doctor = new DoctorMaybe("Doctor Maybe");
 		gameMap.addActor(doctor, 2, 10);
+		Q q = new Q();
+		gameMap.addActor(q, 3, 10);
+
 		world.run();
 	}
 }
