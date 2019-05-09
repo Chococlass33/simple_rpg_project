@@ -29,15 +29,15 @@ public class PlayerController implements Controller {
      */
     @Override
     public Optional<Action> selectedAction(Character subject, Actions actions, GameMap map, Display display) {
-        ArrayList<java.lang.Character> freeChars = new ArrayList<java.lang.Character>();
-        HashMap<java.lang.Character, Action> keyToActionMap = new HashMap<java.lang.Character, Action>();
+        ArrayList<java.lang.Character> freeChars = new ArrayList<>();
+        HashMap<java.lang.Character, Action> keyToActionMap = new HashMap<>();
 
         for (char i = 'a'; i <= 'z'; i++)
             freeChars.add(i);
 
         for (Action action : actions) {
             String hotKey = action.hotKey();
-            if (hotKey != "") {
+            if (!hotKey.equals("")) {
                 if (freeChars.isEmpty())
                     break;
                 char c = hotKey.charAt(0);
@@ -48,7 +48,7 @@ public class PlayerController implements Controller {
         }
 
         for (Action action : actions) {
-            if (action.hotKey() == "") {
+            if (action.hotKey().equals("")) {
                 if (freeChars.isEmpty())
                     break;
                 char c = freeChars.get(0);
@@ -63,6 +63,7 @@ public class PlayerController implements Controller {
             key = display.readChar();
         } while (!keyToActionMap.containsKey(key));
 
+        logger.debug("Character: {} | Chooses action: {}", subject.getName(), keyToActionMap.get(key));
         return Optional.of(keyToActionMap.get(key));
     }
 }

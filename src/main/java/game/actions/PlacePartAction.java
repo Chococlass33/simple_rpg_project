@@ -63,12 +63,12 @@ public class PlacePartAction extends Action {
                 tempstring += "You still need to find the engine.\n";
             }
         }
-        if(hasbody & hasengine)
+        if(hasbody && hasengine)
         {
             tempstring += "The rocket is already finished.\n";
         }
         map.add(new RocketPad(putbody,putengine), location);
-        if(putbody & putengine)
+        if(putbody && putengine)
         {
             tempstring += "Woo, the rocket is finished.\nYou get in the rocket, and it explodes in a spectacular manner.\nTo be fair you put it together in like 5 minutes, craftsmanship isn't your forte.\nAs far as the game is concerned though, YOU'RE WINNER!\n";
             map.removeActor(actor);
