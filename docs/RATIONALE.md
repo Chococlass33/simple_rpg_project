@@ -2,8 +2,8 @@
 This document will summarise some of the design decisions made within the game as well as the reasons behind those decisions.
 
 ## Door Unlocking Behaviour
-The planned behaviour is for a door to be unlocked when a character with a suitable key unlocks it. A door can be locked by any character, including those without keys.
-This may mean that NPCs or enemies may unlock doors the players wishes to go through without the player needing to obtain the key. Of course the NPC may relock the door once they pass through it.
+The planned behaviour is for a door to be unlocked when a character with a suitable key unlocks it. A door can only be locked by a character with a suitable key.
+This may mean that NPCs or enemies with the key may unlock doors the players wishes to go through without the player needing to obtain the key. Of course the NPC may relock the door once they pass through it.
 This behaviours was chosen because it seems like a more interesting experience to the player when NPCs may accidentally assist the player achieve their goals.
 
 ## Character
