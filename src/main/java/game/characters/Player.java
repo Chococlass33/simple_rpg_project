@@ -12,6 +12,6 @@ public class Player extends Character {
      * @param name   Player name.
      */
     public Player(String name) {
-        super(new PlayerController(), name, DisplayCharacters.PLAYER, 100, 100, 5);
+        super(new PlayerController(), name, DisplayCharacters.PLAYER, 1, 100, 5);
     }
 }
