@@ -30,7 +30,9 @@ public class DisplayCharacters {
     public static final java.lang.Character ROCKET_PAD = '?';
 
     // Colours for Keys/Doors
-    public static final java.lang.String[] COLORS = {"Red","Blue","Purple","Pink","Brown","Black","Green","Orange","Yellow","White"};
-    public static int DOORCOUNT = 0;
-
+    public enum colour {
+        RED,
+        BLUE,
+        GREEN;
+    }
 }

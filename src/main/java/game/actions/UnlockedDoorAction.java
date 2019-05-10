@@ -1,6 +1,7 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
+import game.DisplayCharacters;
 import game.Items.Key;
 import game.ground.LockedDoor;
 import game.ground.UnlockedDoor;
@@ -13,7 +14,7 @@ import java.util.List;
 public class UnlockedDoorAction extends Action {
     private boolean isUnlocked;
     private Location doorLocation;
-    private String color;
+    private DisplayCharacters.colour color;
     /**
      * Construct a UnlockedDoor action
      *
@@ -21,7 +22,7 @@ public class UnlockedDoorAction extends Action {
      * @param color String representing the color of the door.
      * @param isUnlocked Boolean switching between locking and unlocking.
      */
-    public UnlockedDoorAction(Location doorLocation, String color, boolean isUnlocked) {
+    public UnlockedDoorAction(Location doorLocation, DisplayCharacters.colour color, boolean isUnlocked) {
         this.doorLocation = doorLocation;
         this.color = color;
         this.isUnlocked = isUnlocked;
@@ -36,8 +37,7 @@ public class UnlockedDoorAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        List<Item> inventory = actor.getInventory();
-        if(inventory.contains(new Key(color)))
+        if(hasKey(actor, color))
         {
             if (isUnlocked) {
                 map.add(new LockedDoor(color), doorLocation);
@@ -56,6 +56,23 @@ public class UnlockedDoorAction extends Action {
     }
 
     /**
+     * Check if an actor has the right key in their inventory
+     * @param actor Actor whose inventory to check
+     * @param colour The colour of the door
+     * @return True is key is foudn false if no key or wrong key is found
+     */
+    private boolean hasKey(Actor actor, DisplayCharacters.colour colour) {
+        List<Item> inventory = actor.getInventory();
+        for (Item item : inventory) {
+            if (item instanceof Key && ((Key) item).getColour() == colour) {
+                // if key of correct colour is found
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * How the action is described in a menu.
      *
      * @param actor The actor performing the action.
@@ -63,7 +80,11 @@ public class UnlockedDoorAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " locks the door.";
+        if (isUnlocked) {
+            return actor + " locks the door";
+        } else {
+            return actor + " unlocks the door";
+        }
     }
 
     /**

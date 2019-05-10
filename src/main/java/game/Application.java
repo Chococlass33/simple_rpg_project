@@ -22,7 +22,7 @@ public class Application{
 		logger.info("Starting game");
 		World world = new World(new LogDisplay());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new LockedDoor(), new UnlockedDoor(), new RocketPad());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new RocketPad());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
@@ -64,12 +64,12 @@ public class Application{
 		gameMap.addActor(doctor, 5, 5);
 
 		// Keys
-		ninja.addItemToInventory(new Key(DisplayCharacters.COLORS[0]));
-		goon.addItemToInventory(new Key(DisplayCharacters.COLORS[1]));
+		ninja.addItemToInventory(new Key(DisplayCharacters.colour.BLUE));
+		goon.addItemToInventory(new Key(DisplayCharacters.colour.GREEN));
 
 		// Doors
-		Ground door1 = new UnlockedDoor(DisplayCharacters.COLORS[1]);
-		Ground door2 = new LockedDoor(DisplayCharacters.COLORS[0]);
+		Ground door1 = new UnlockedDoor(DisplayCharacters.colour.GREEN);
+		Ground door2 = new LockedDoor(DisplayCharacters.colour.BLUE);
 		gameMap.add(door1, gameMap.at(8, 3));
 		gameMap.add(door2, gameMap.at(15, 4));
 
