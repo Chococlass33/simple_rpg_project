@@ -57,7 +57,7 @@ public class CheckPadAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "checks the rocket pad.";
+        return actor + " checks the rocket pad.";
     }
 
     /**
