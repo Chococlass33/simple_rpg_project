@@ -7,8 +7,6 @@ import game.characters.Player;
 import game.ground.LockedDoor;
 import game.ground.RocketPad;
 import game.ground.UnlockedDoor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,10 +15,7 @@ public class Application{
 
 	public static void main(String[] args) {
 
-		System.setProperty("log4j.configuration","log4j2.xml");
-		Logger logger = LogManager.getLogger(Application.class);
-		logger.info("Starting game");
-		World world = new World(new LogDisplay());
+		World world = new World(new Display());
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new RocketPad());
 		GameMap gameMap;

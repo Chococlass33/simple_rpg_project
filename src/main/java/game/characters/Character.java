@@ -3,8 +3,7 @@ package game.characters;
 import edu.monash.fit2099.engine.*;
 import game.status.StatusEffect;
 import game.controllers.Controller;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.Optional;
  */
 public class Character extends Actor {
 
-    private Logger logger = LogManager.getLogger(this.getClass());
 
     // Intrinsic damage
     private int intDamage;
@@ -90,7 +88,6 @@ public class Character extends Actor {
 
         if (action.isPresent()) {
             // If the status effect has an action. Force the character to perform the action.
-            logger.debug("Character: {} | Forced Action: {}", getName(), action.get().getClass().getSimpleName());
             return action.get();
         }
 
@@ -129,7 +126,6 @@ public class Character extends Actor {
         // Check for expired status effects
         for (StatusEffect effect : statusEffects) {
             if (effect.isExpired()) {
-                logger.debug("Character: {} | Status effect expired: {}", getName(), effect.getEffectName());
             } else {
                 validEffects.add(effect);
             }
@@ -144,7 +140,6 @@ public class Character extends Actor {
      * @param status The status effect to add
      */
     public void addStatusEffect(StatusEffect status) {
-        logger.debug("Character: {} | Status effect applied: {}", getName(), status.getEffectName());
         statusEffects.add(status);
     }
 

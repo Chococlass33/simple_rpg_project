@@ -6,8 +6,6 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import game.characters.Character;
 import game.behaviours.ActionFactory;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +16,6 @@ import java.util.Optional;
  * The looping controller changes the default NPC behaviour to iterate through possible actions and perform the first valid action it can.
  */
 public class LoopingController implements Controller {
-
-    private Logger logger = LogManager.getLogger(this.getClass());
 
     // List of possible actions that can be made
     private List<ActionFactory> actionFactories = new ArrayList<>();
@@ -44,12 +40,10 @@ public class LoopingController implements Controller {
         for (ActionFactory factory : actionFactories) {
             Action action = factory.getAction(subject, map);
             if(action != null) {
-                logger.debug("Character: {} selected action: {}", subject.getName(), action.getClass().getSimpleName());
                 return Optional.of(action);
             }
         }
 
-        logger.debug("Character: {}, selected no action", subject.getName());
         return Optional.empty();
     }
 
