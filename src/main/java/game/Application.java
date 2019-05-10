@@ -27,15 +27,15 @@ public class Application{
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
-				".#.....................",
-				"#.#.#####....######....",
-				".#..#...#....#....#....",
+				".......................",
+				"....#####....######....",
+				"....#...#....#....#....",
 				"....#...-....#....#....",
 				"....#####....##+###....",
 				".......................",
 				".......................",
 				".......................",
-				"................@......",
+				".......................",
 				".......................",
 				".......................");
 		gameMap = new GameMap(groundFactory, map);
@@ -47,12 +47,11 @@ public class Application{
 		gameMap.addItem(new Warhammer(), 10,4);
 		gameMap.addItem(new RocketBody(), 10,5);
 		gameMap.addItem(new RocketEngine(), 10,6);
-		gameMap.addItem(new RocketPlans(), 10,7);
 		Grunt grunt = new Grunt("Mongo", player);
 		gameMap.addActor(grunt, 1, 1);
 		Grunt grunt2 = new Grunt("Norbert", player);
 		gameMap.addActor(grunt2,  10, 10);
-		Ninja ninja = new Ninja("Billy", player); // TODO Ninja can only target characters not actors. to target the player we need player to be a subclass of character
+		Ninja ninja = new Ninja("Billy", player);
 		gameMap.addActor(ninja, 0, 0);
 		Goon goon = new Goon("Valerie", player);
 		gameMap.addActor(goon, 9, 10);

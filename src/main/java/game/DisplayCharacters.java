@@ -15,19 +15,19 @@ public class DisplayCharacters {
     public static final java.lang.Character GOON = 'G';
     public static final java.lang.Character DOCTOR_MAYBE = 'D';
     public static final java.lang.Character Q = 'Q';
-    public static final java.lang.Character PLAYER = '?';
+    public static final java.lang.Character PLAYER = '@';
 
     // Item display chars
     public static final java.lang.Character ROCKET_PLANS = 'P';
-    public static final java.lang.Character ROCKET_BODY = '$';
-    public static final java.lang.Character ROCKET_ENGINE = '^';
+    public static final java.lang.Character ROCKET_BODY = 'B';
+    public static final java.lang.Character ROCKET_ENGINE = 'E';
     public static final java.lang.Character KEY = '*';
     public static final java.lang.Character WARHAMMER = 'T';
 
     // Ground display chars
     public static final java.lang.Character UNLOCKED_DOOR = '-';
     public static final java.lang.Character LOCKED_DOOR = '+';
-    public static final java.lang.Character ROCKET_PAD = '@';
+    public static final java.lang.Character ROCKET_PAD = '?';
 
     // Colours for Keys/Doors
     public static final java.lang.String[] COLORS = {"Red","Blue","Purple","Pink","Brown","Black","Green","Orange","Yellow","White"};

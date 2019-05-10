@@ -1,7 +1,7 @@
 package game.characters;
 
 import game.DisplayCharacters;
-import game.Items.RocketPlans;
+import game.Items.RocketEngine;
 import game.behaviours.StandStillBehaviour;
 import game.controllers.LoopingController;
 
@@ -17,7 +17,7 @@ public class DoctorMaybe extends Character {
         // Create suitable character
         super(new LoopingController(new StandStillBehaviour()), name, DisplayCharacters.DOCTOR_MAYBE, 7, 25, 2);
         // Give rocket plans
-        this.addToInventory(new RocketPlans());
+        this.addToInventory(new RocketEngine());
     }
 
 }
