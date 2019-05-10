@@ -28,8 +28,8 @@ We have decided that if an actor were to make an insult or a stun action as part
 ## Controllers
 Initially each Actor subclass would override play turn to include its own decision making logic for choosing an action. Controller is an interface that allows for different Controllers to be built and used on any character.
 
-## LogDisplay
-The LogDisplay class extends the normal Display class and overrides it primary method (output to console). The default Display logic is to print the string passed to it as a console message. The LogDisplay changes this behaviour slightly and will both print to console and log the string into the debug.log file. This is to assist with debugging as we will have a log of all actions taken in that game instance.
-
 ## Display Characters
 In the game everything is rendered on the map as a Java character. In order to prevent unexpected behaviour when different classes use the same display character the DisplayCharacters class was designed. Normally all the display characters are declared within different classes, this could result in difficulty understanding which characters have already been reserved. The display character class only has static final values within it. It only exists to place all the display characters for our game into a single place to make it easier to manage.
+
+## Chaos
+Non-player characters go through their behaviours. If no behaviours are selected they interact with the world around them. This results in strange situations, such as a grunt stunning Doctor Maybe and then picking up the rocket engine. These behaviours could be coded out if we wanted to. But the chaos often makes for a more interesting experience so we didn't attempt to restrict these chaotic behaviours.
