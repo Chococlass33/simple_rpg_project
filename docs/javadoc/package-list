@@ -1,2 +1,10 @@
+edu.monash.fit2099.demo
 edu.monash.fit2099.engine
 game
+game.Items
+game.actions
+game.behaviours
+game.characters
+game.controllers
+game.ground
+game.status
