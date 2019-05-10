@@ -165,13 +165,4 @@ public class Character extends Actor {
         return statusNames;
     }
 
-    /**
-     * This method adds an item to the character's inventory.
-     * @param item Item to add to inventory
-     */
-    public void addToInventory(Item item) {
-        logger.debug("Character: {} | Item: {} | Added to inventory", getName(), item.getClass().getSimpleName());
-        inventory.add(item);
-    }
-
 }

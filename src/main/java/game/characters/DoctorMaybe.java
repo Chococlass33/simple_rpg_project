@@ -17,7 +17,7 @@ public class DoctorMaybe extends Character {
         // Create suitable character
         super(new LoopingController(new StandStillBehaviour()), name, DisplayCharacters.DOCTOR_MAYBE, 7, 25, 2);
         // Give rocket plans
-        this.addToInventory(new RocketEngine());
+        this.addItemToInventory(new RocketEngine());
     }
 
 }

@@ -74,7 +74,6 @@ public class Application{
 		gameMap.add(door2, gameMap.at(15, 4));
 
 		// Rocket Parts
-		gameMap.addItem(new RocketBody(), 10,5);
 		gameMap.addItem(new RocketPlans(), 14,2);
 
 		// Allies
