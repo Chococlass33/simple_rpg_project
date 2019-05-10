@@ -29,20 +29,37 @@ public class GivePlansAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-            List<Item> inventory = actor.getInventory();
             String tempstring = actor + " tries to give " + taker + " the plans.\n";
-            if(inventory.contains(new RocketPlans()))
+            RocketPlans plans = getPlans(actor);
+            if(plans != null)
             {
-                inventory.remove(new RocketPlans());
-                inventory.add(new RocketBody());
-                tempstring += "'WOWEE those plans look mighty juicy. Here, I'll just leave you this rocket body.uwu' " + taker +" exclaims.\n" + actor + " gets the rocket body.";
+                Location actorLocation = map.locationOf(actor);
+                actorLocation.addItem(new RocketBody());
+                actor.removeItemFromInventory(plans);
+                tempstring += "'WOWEE those plans look mighty juicy. Here, I'll just leave you this rocket body.' " + taker +" exclaims.\n" + actor + " gets the rocket body.";
                 map.removeActor(taker);
             }
             else
             {
-                tempstring += "Too bad " + actor + " doesn't have the plans right now. Should be in some locked area somewhere.owo";
+                tempstring += "Too bad " + actor + " doesn't have the plans right now. Should be in some locked area somewhere.";
             }
             return tempstring;
+    }
+
+    /**
+     * Checks if the actor has rocket plan in their inventory
+     * @param actor The actor to check
+     * @return True if the acgtor has the plans false if they do not
+     */
+    private RocketPlans getPlans(Actor actor) {
+        List<Item> inventory = actor.getInventory();
+        for (Item item : inventory) {
+            if (item instanceof RocketPlans) {
+                // A rocket plan item is in the inventory
+                return (RocketPlans) item;
+            }
+        }
+        return null;
     }
 
     /**

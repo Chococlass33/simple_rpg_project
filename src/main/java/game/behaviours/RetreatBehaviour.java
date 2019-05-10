@@ -2,6 +2,8 @@ package game.behaviours;
 
 import edu.monash.fit2099.engine.*;
 
+import java.util.Random;
+
 /**
  * Retreat further from the target if the target gets to close.
  */
@@ -9,6 +11,7 @@ public class RetreatBehaviour implements ActionFactory {
 
     private Actor target;
     private int minAcceptableDistance;
+    private Random rand = new Random();
 
     /**
      * Construct a retreat behaviour
@@ -34,8 +37,9 @@ public class RetreatBehaviour implements ActionFactory {
         Location here = map.locationOf(actor);
         Location there = map.locationOf(target);
 
+        int random = rand.nextInt(4);
         int currentDistance = distance(here, there);
-        if (currentDistance <= minAcceptableDistance) {
+        if (currentDistance <= minAcceptableDistance && random < 3) {
             for (Exit exit : here.getExits()) {
                 Location destination = exit.getDestination();
                 if (destination.canActorEnter(actor)) {

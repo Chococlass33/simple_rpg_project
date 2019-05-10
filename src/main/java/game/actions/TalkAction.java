@@ -32,11 +32,11 @@ public class TalkAction extends Action {
         String tempstring = actor + " talks to " + giver +".\n";
         if(inventory.contains(new RocketPlans()))
         {
-            tempstring += "'Hand them over, I don't have all day! owo' " + giver +" exclaims.\n";
+            tempstring += "'Hand them over, I don't have all day!' " + giver +" exclaims.\n";
         }
         else
         {
-            tempstring += "'I can give you something that will help, but I’m going to need the plans. uwu' " + giver +" exclaims.\n";
+            tempstring += "'I can give you something that will help, but I’m going to need the plans.' " + giver +" exclaims.\n";
         }
         return tempstring;
     }
@@ -49,7 +49,7 @@ public class TalkAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "talks to " + giver;
+        return actor + " talks to " + giver;
     }
 
     /**

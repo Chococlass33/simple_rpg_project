@@ -3,7 +3,11 @@ package game.actions;
 import edu.monash.fit2099.engine.*;
 import game.Items.RocketBody;
 import game.Items.RocketEngine;
+import game.Items.RocketPlans;
 import game.ground.RocketPad;
+
+import java.util.List;
+
 /**
  * The actor puts parts into the rocket pad.
  */
@@ -11,11 +15,12 @@ public class PlacePartAction extends Action {
     private Location location;
     private boolean hasbody;
     private boolean hasengine;
+
     /**
      * Construct a PlacePart action
      *
-     * @param location Location of the rocket pad.
-     * @param hasBody Boolean representing the status of the rocket body.
+     * @param location  Location of the rocket pad.
+     * @param hasBody   Boolean representing the status of the rocket body.
      * @param hasEngine Boolean representing the status of the rocket engine.
      */
     public PlacePartAction(Location location, boolean hasBody, boolean hasEngine) {
@@ -23,6 +28,7 @@ public class PlacePartAction extends Action {
         this.hasbody = hasBody;
         this.hasengine = hasEngine;
     }
+
     /**
      * An actor places parts into the rocket pad.
      *
@@ -35,46 +41,72 @@ public class PlacePartAction extends Action {
         String tempstring = "You try to assemble the rocket.\n";
         boolean putbody = hasbody;
         boolean putengine = hasengine;
-        if(!hasbody)
-        {
+        if (!hasbody) {
             tempstring += "You notice the body is missing.\n";
-            if(actor.getInventory().contains(new RocketBody()))
-            {
+            RocketBody body = getBody(actor);
+            if (body != null) {
                 putbody = true;
-                actor.getInventory().remove(new RocketBody());
+                actor.removeItemFromInventory(body);
                 tempstring += "You attach the body to the launchpad.\n";
-            }
-            else
-            {
+            } else {
                 tempstring += "You still need to find the body.\n";
             }
         }
-        if(!hasengine)
-        {
+        if (!hasengine) {
             tempstring += "You notice the engine is missing.\n";
-            if(actor.getInventory().contains(new RocketEngine()))
-            {
+            RocketEngine engine = getEngine(actor);
+            if (engine != null) {
                 putengine = true;
-                actor.getInventory().remove(new RocketEngine());
+                actor.removeItemFromInventory(engine);
                 tempstring += "You attach the engine to the launchpad.\n";
-            }
-            else
-            {
+            } else {
                 tempstring += "You still need to find the engine.\n";
             }
         }
-        if(hasbody && hasengine)
-        {
+        if (hasbody && hasengine) {
             tempstring += "The rocket is already finished.\n";
         }
-        map.add(new RocketPad(putbody,putengine), location);
-        if(putbody && putengine)
-        {
+        map.add(new RocketPad(putbody, putengine), location);
+        if (putbody && putengine) {
             tempstring += "Woo, the rocket is finished.\nYou get in the rocket, and it explodes in a spectacular manner.\nTo be fair you put it together in like 5 minutes, craftsmanship isn't your forte.\nAs far as the game is concerned though, YOU'RE WINNER!\n";
             map.removeActor(actor);
         }
 
         return tempstring;
+    }
+
+    /**
+     * Get the rocket body from the actor inventory
+     *
+     * @param actor To get inventory item from
+     * @return RocketBody
+     */
+    private RocketBody getBody(Actor actor) {
+        List<Item> inventory = actor.getInventory();
+        for (Item item : inventory) {
+            if (item instanceof RocketBody) {
+                // A rocket plan item is in the inventory
+                return (RocketBody) item;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Get the rocket engine from the actor inventory
+     *
+     * @param actor To get inventory item from
+     * @return RocketEngine
+     */
+    private RocketEngine getEngine(Actor actor) {
+        List<Item> inventory = actor.getInventory();
+        for (Item item : inventory) {
+            if (item instanceof RocketEngine) {
+                // A rocket plan item is in the inventory
+                return (RocketEngine) item;
+            }
+        }
+        return null;
     }
 
     /**

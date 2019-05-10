@@ -1,6 +1,5 @@
 package game.Items;
 
-import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.Item;
 import game.*;
 
@@ -14,7 +13,5 @@ public class RocketPlans extends Item {
      */
     public RocketPlans() {
         super("Rocket Plans", DisplayCharacters.ROCKET_PLANS);
-        allowableActions.clear();
-        allowableActions.add(new DropItemAction(this));
     }
 }

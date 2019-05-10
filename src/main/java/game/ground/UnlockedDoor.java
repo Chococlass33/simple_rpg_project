@@ -8,21 +8,14 @@ import game.actions.UnlockedDoorAction;
  * An Unlocked Door. Has a color with a corresponding key. Can be passed. Can be locked using the UnlockedDoorAction by an actor with the right key.
  */
 public class UnlockedDoor extends Ground {
-    private String color;
-    /**
-     * Construct an UnlockedDoor. With no parameters, the color is automatically generated based on a static counter.
-     */
-    public UnlockedDoor() {
-        super(DisplayCharacters.UNLOCKED_DOOR);
-        this.color = DisplayCharacters.COLORS[DisplayCharacters.DOORCOUNT %10];
-        DisplayCharacters.DOORCOUNT++;
-    }
+    private DisplayCharacters.colour color;
+
     /**
      * Construct an UnlockedDoor. Using the parameter, you can create this door without incrementing the counter.
      * Useful for actions that replace another ground object with this door.
      * @param color   String representing the color of the door.
      */
-    public UnlockedDoor(String color) {
+    public UnlockedDoor(DisplayCharacters.colour color) {
         super(DisplayCharacters.UNLOCKED_DOOR);
         this.color = color;
     }
