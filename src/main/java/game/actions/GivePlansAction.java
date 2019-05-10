@@ -35,6 +35,7 @@ public class GivePlansAction extends Action {
             {
                 Location actorLocation = map.locationOf(actor);
                 actorLocation.addItem(new RocketBody());
+                actor.removeItemFromInventory(plans);
                 tempstring += "'WOWEE those plans look mighty juicy. Here, I'll just leave you this rocket body.' " + taker +" exclaims.\n" + actor + " gets the rocket body.";
                 map.removeActor(taker);
             }
