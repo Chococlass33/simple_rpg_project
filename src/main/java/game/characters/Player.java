@@ -1,7 +1,6 @@
 package game.characters;
 
 import game.DisplayCharacters;
-import game.controllers.Controller;
 import game.controllers.PlayerController;
 /**
  * A Player. Will be controlled by the user.
