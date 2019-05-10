@@ -21,8 +21,8 @@ public class DisplayCharacters {
     public static final java.lang.Character ROCKET_PLANS = 'P';
     public static final java.lang.Character ROCKET_BODY = 'B';
     public static final java.lang.Character ROCKET_ENGINE = 'E';
-    public static final java.lang.Character KEY = '*';
-    public static final java.lang.Character WARHAMMER = 'T';
+    public static final java.lang.Character KEY = 'K';
+    public static final java.lang.Character WARHAMMER = 'W';
 
     // Ground display chars
     public static final java.lang.Character UNLOCKED_DOOR = '-';
