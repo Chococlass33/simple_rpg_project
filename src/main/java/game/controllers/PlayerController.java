@@ -5,9 +5,6 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import game.characters.Character;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
@@ -16,7 +13,6 @@ import java.util.Optional;
  * The Player controller allows the player to make actions from the menu, selected from currently available actions.
  */
 public class PlayerController implements Controller {
-    private Logger logger = LogManager.getLogger(this.getClass());
 
 
     /**
@@ -63,7 +59,6 @@ public class PlayerController implements Controller {
             key = display.readChar();
         } while (!keyToActionMap.containsKey(key));
 
-        logger.debug("Character: {} | Chooses action: {}", subject.getName(), keyToActionMap.get(key));
         return Optional.of(keyToActionMap.get(key));
     }
 }

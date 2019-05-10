@@ -5,14 +5,11 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import game.characters.Character;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 
 public class EmptyController implements Controller {
 
-    private Logger logger = LogManager.getLogger(this.getClass());
 
     /**
      * Return no action.
@@ -24,7 +21,6 @@ public class EmptyController implements Controller {
      * @return Action to be performed.
      */
     public Optional<Action> selectedAction(Character subject, Actions actions, GameMap map, Display display) {
-        logger.debug("Character: {}, selected no action", subject.getName());
         return Optional.empty();
     }
 }

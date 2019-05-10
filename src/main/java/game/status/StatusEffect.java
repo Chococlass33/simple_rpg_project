@@ -2,8 +2,6 @@ package game.status;
 
 import edu.monash.fit2099.engine.Action;
 import game.characters.Character;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 
@@ -11,8 +9,6 @@ import java.util.Optional;
  * Abstract class for all status effects.
  */
 public abstract class StatusEffect {
-
-    private Logger logger = LogManager.getLogger(this.getClass());
 
     // Name of effect
     private String effectName;
@@ -44,10 +40,8 @@ public abstract class StatusEffect {
     public Optional<Action> performStatusEffect(Character subject) {
         effectDuration -= 1;
         if (!isExpired()) {
-            logger.debug("Character: {} | Status : {} | Executed status effect", subject.getName(), effectName);
             return executeEffect(subject);
         } else {
-            logger.debug("Character: {} | Status : {} | Has expired", subject.getName(), effectName);
             return Optional.empty();
         }
     }
