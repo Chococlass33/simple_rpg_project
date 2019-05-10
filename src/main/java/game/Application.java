@@ -5,6 +5,9 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.World;
 import game.Items.*;
 import game.characters.*;
+import game.ground.LockedDoor;
+import game.ground.RocketPad;
+import game.ground.UnlockedDoor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +23,7 @@ public class Application{
 		logger.info("Starting game");
 		World world = new World(new LogDisplay());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new LockedDoor(), new UnlockedDoor(), new RocketPad());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
