@@ -10,6 +10,6 @@ public class Warhammer extends WeaponItem {
      * Create a warhammer object.
      */
     public Warhammer() {
-        super("War-Hammer", DisplayCharacters.WARHAMMER,50,"threatens");
+        super("War-Hammer", DisplayCharacters.WARHAMMER,18,"smacks");
     }
 }
