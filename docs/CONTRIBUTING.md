@@ -24,7 +24,7 @@ Unexpected events may result in a slightly different distribution. Any major dep
 
 ## Assignment 2
 ### Planned Deliverables
-Planned deliverables are classes designed and identified in Assignment 1. It's possible the specific classes may change if better implementations are found during work. Any deviantions in deliverables will be noted at the bottom of the WBA for assignment 2
+Planned deliverables are classes designed and identified in Assignment 1. It's possible the specific classes may change if better implementations are found during work. Any deviations in deliverables will be noted at the bottom of the WBA for assignment 2
 * Character Class
 * StunEffect Class
 * StunStatus Class
@@ -105,7 +105,7 @@ I, Chee Chin Chan declare that I believe the above WBA for assignment 2 represen
 #### Lawson
 * Updates to design
     * Split decision making from character class into the controller interface.
-    * Changed how the Stun feautre would be implemented
+    * Changed how the Stun feature would be implemented
 * Additional classes built not within original WBA
     * Controller.class
     * LoopingController.class
@@ -116,3 +116,69 @@ I, Chee Chin Chan declare that I believe the above WBA for assignment 2 represen
     * InsultAction.class
     * RocketPlans.class
     * DisplayCharacter.class
+
+## Assignment 3
+### Planned Deliverables
+Planned deliverables are tasks that need to be completed for assignment 3. These may be tasks relating to documentation, testing, modifying existing classes, or building new classes.
+* Documentation Deliverables
+  * Design rationale (updated)
+  * Class Diagram (updated)
+  * Game engine recommendations
+* Classes that will require modification
+  * Application.class - Changing to add a moon map
+  * StatusEffect.class - Change to support an oxygen status effect
+  * PlacePartAction.class
+* Classes that need to be built
+  * Spacesuit.class
+  * OxygenDispenser.class
+  * OxygenTank.class
+  * VacuumEffect.class
+  * MapTransfer.class
+  * YugoMaxx.class
+  * WaterPistol.class
+  * Water.class
+  * ExoSkeletonStatus.class
+  * QuitGameAction.class
+  * GameVictoryAction.class
+  * GameLossAction.class
+  * UseRocketAction.class
+
+### Planned Work Assignment
+#### Lawson
+* Deliverables due by 21/05/2019
+  * Class diagram 
+* Deliverables due by 24/05/2019
+  * StatusEffect.class
+  * Spacesuit.class
+  * OxygenDispenser.class 
+  * OxygenTank.class
+  * VacuumEffect.class
+  * ExoSkeletonStatus.class 
+  * YugoMaxx.class
+* Deliverables due by 30/05/2019
+  * Testing of Chee's tasks
+  * Part of the design rationale
+
+#### Chee
+* Deliverables due by 24/05/2019
+  * Game engine recommendations
+  * Application.class
+  * PlacePartAction.class
+  * MapTransfer.class
+  * WaterPistol.class
+  * Water.class
+  * QuitGameAction.class
+  * GameVictoryAction.class
+  * GameLossAction.class
+  * UseRocketAction.class
+* Deliverables due by 30/05/2019
+  * Testing of Lawson's tasks
+  * Part of the design rationale
+
+### Agreement
+I, Lawson Meulman Declare that I find this WBA to be an acceptable distribution of work.
+
+### Deviations from WBA
+#### Lawson
+
+#### Chee
