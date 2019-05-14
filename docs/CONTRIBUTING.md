@@ -178,6 +178,7 @@ Planned deliverables are tasks that need to be completed for assignment 3. These
 ### Agreement
 I, Lawson Meulman Declare that I find this WBA to be an acceptable distribution of work.
 
+I, Chee Chin Chan Declare that I find this WBA to be an acceptable distribution of work.
 ### Deviations from WBA
 #### Lawson
 
