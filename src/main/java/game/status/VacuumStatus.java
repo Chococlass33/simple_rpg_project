@@ -10,7 +10,7 @@ import java.util.Optional;
 /**
  * A status effect for stunned characters
  */
-public class StunStatus extends StatusEffect {
+public class VacuumStatus extends StatusEffect {
 
     public static final String STUN_STATUS = "Stun Status";
 
@@ -18,7 +18,7 @@ public class StunStatus extends StatusEffect {
      * Create a stun status
      * @param duration How long the status will last
      */
-    public StunStatus(int duration) {
+    public VacuumStatus(int duration) {
         super(duration, STUN_STATUS);
     }
 

@@ -84,7 +84,7 @@ public class Character extends Actor {
 
         // Apply status effects
         clearExpiredStatusEffects();
-        Optional<Action> action = executeStatusEffects();
+        Optional<Action> action = executeStatusEffects(display);
 
         if (action.isPresent()) {
             // If the status effect has an action. Force the character to perform the action.
@@ -102,12 +102,12 @@ public class Character extends Actor {
      * Run all the status effects on the character. If multiple status effects return actions return the last one.
      * @return Optional action.
      */
-    private Optional<Action> executeStatusEffects() {
+    private Optional<Action> executeStatusEffects(Display display) {
 
         Optional<Action> statusAction = Optional.empty();
 
         for (StatusEffect effect : statusEffects) {
-            Optional<Action> tempAction = effect.performStatusEffect(this);
+            Optional<Action> tempAction = effect.performStatusEffect(this, display);
             if (tempAction.isPresent()) {
                 statusAction = tempAction;
             }
