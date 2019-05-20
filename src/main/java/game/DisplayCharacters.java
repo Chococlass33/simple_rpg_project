@@ -23,6 +23,8 @@ public class DisplayCharacters {
     public static final java.lang.Character ROCKET_ENGINE = 'E';
     public static final java.lang.Character KEY = 'K';
     public static final java.lang.Character WARHAMMER = 'W';
+    public static final java.lang.Character OXYGEN_TANK = 'O';
+    public static final java.lang.Character SPACE_SUIT = 'S';
 
     // Ground display chars
     public static final java.lang.Character UNLOCKED_DOOR = '-';

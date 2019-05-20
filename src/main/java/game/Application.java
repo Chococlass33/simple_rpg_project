@@ -1,7 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
-import game.Items.*;
+import game.items.*;
 import game.characters.*;
 import game.characters.Player;
 import game.ground.LockedDoor;
@@ -39,7 +39,7 @@ public class Application{
 		Player player = new Player("Player");
 		world.addPlayer(player, gameMap, 10, 0);
 
-		// Misc Items
+		// Misc items
 		gameMap.addItem(new Warhammer(), 0,0);
 
 		// Enemies
