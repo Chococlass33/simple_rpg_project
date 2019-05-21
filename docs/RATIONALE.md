@@ -33,3 +33,14 @@ In the game everything is rendered on the map as a Java character. In order to p
 
 ## Chaos
 Non-player characters go through their behaviours. If no behaviours are selected they interact with the world around them. This results in strange situations, such as a grunt stunning Doctor Maybe and then picking up the rocket engine. These behaviours could be coded out if we wanted to. But the chaos often makes for a more interesting experience so we didn't attempt to restrict these chaotic behaviours.
+
+## VacuumEffect
+We decided to implement suffocation as part of the status effect system. The VacuumEffect will cause characters to be teleported back to the first map if they can't breath. A character can breath if they have a spacesuit and sufficent supplies of Oxygen. We decided to apply/remove the VacuumEffect exclusively to the player character when teleporting between the moon and normal map. The desired behaviour is for only the character to suffocate while other characters on the moon are immune. Rather than designing new objects to make enemies immune to the VacuumEffect we will simply not apply the VacuumEffect to them.
+
+## Exoskeleton
+One of the enemies will be immune to damage, as a resuult of an exoskeleton. We plan to implement this with three aspects:
+* A armour stat in our character class. Armour will reduce all incoming damage by the amount of armour on the character. So a character with three armour taking 5 damage will only lose 2 health.
+* An exoskelton item that applies the armoured status effect to a character.
+* An armoured status that raises a character's armour stat while active.
+
+Invulnerability to damage will be achieved by applying a massive ArmourStatus bonus to exoskeleton wearing characters.
