@@ -176,4 +176,19 @@ public class Character extends Actor {
         return false;
     }
 
+    /**
+     * Retrieve an item from the characters inventory based on it's class.
+     * @param itemClass The class of item to retrieve.
+     * @return An optional item.
+     */
+    public Optional<Item> getItemByClass(Class<?> itemClass) {
+        List<Item> inventory = getInventory();
+        for (Item item : inventory) {
+            if (itemClass.isInstance(item)) {
+                return Optional.of(item);
+            }
+        }
+        return Optional.empty();
+    }
+
 }
