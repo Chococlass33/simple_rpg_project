@@ -31,8 +31,9 @@ public class AdvancedAttackAction extends Action {
 		int damage = weapon.damage();
 		int originalHealth = subject.getHealth();
 		subject.hurt(damage);
+		damage = originalHealth - subject.getHealth();
 		// Report actual damage
-		String result = actor + " " + weapon.verb() + " " + subject + " for " + (originalHealth - subject.getHealth()) + " damage.";
+		String result = actor + " " + weapon.verb() + " " + subject + " for " + damage + " damage.";
 
 		// Handle defence
 		if (subject.getDefence() > 0) {
