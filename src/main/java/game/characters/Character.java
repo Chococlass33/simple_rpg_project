@@ -1,6 +1,7 @@
 package game.characters;
 
 import edu.monash.fit2099.engine.*;
+import game.actions.AdvancedAttackAction;
 import game.status.StatusEffect;
 import game.controllers.Controller;
 
@@ -23,6 +24,9 @@ public class Character extends Actor {
 
     // Status effects on the character
     private List<StatusEffect> statusEffects = new ArrayList<>();
+
+    // Defence stat
+    private int defence = 0;
 
     /**
      * Constructor for character
@@ -51,6 +55,53 @@ public class Character extends Actor {
         super(name, displayChar, priority, hitPoints);
         characterController = controller;
         this.intDamage = intDamage;
+    }
+
+    /**
+     * Damage the character. Damage is reduced by the character's defence stat.
+     * @param points number of hitpoints to deduct.
+     */
+    @Override
+    public void hurt(int points) {
+        if (points - defence > 0) {
+            // Hurt the character only if the damage is larger than the defence stat.
+            super.hurt(points - defence);
+        }
+    }
+
+    /**
+     * Modify the defence stat of the character.
+     */
+    public void modifyDefence(int amountToModifyDefenceBy) {
+        defence = amountToModifyDefenceBy;
+    }
+
+    /**
+     * Retrieve the hitpoints of the character.
+     * @return The character's hitpoints.
+     */
+    public int getHealth() {
+        return hitPoints;
+    }
+
+    /**
+     * Characters will use the AdvancedAttackAction to attack each other rather than the default one.
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return Allowable actions
+     */
+    @Override
+    public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+        return new Actions(new AdvancedAttackAction(otherActor, this));
+    }
+
+    /**
+     * Get the defence of the character.
+     * @return int of defence
+     */
+    public int getDefence() {
+        return defence;
     }
 
     /**
