@@ -10,6 +10,7 @@ import game.characters.Character;
 import game.characters.Goon;
 import game.characters.Player;
 import game.ground.RocketPad;
+import game.status.ArmouredStatus;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,8 +36,8 @@ public class AttackMap {
 		world.addPlayer(player, gameMap, 0, 0);
 
 		Character goon = new Goon("Valerie", player);
-		goon.modifyDefence(2);
-		gameMap.addActor(goon, 0, 1);
+		goon.addStatusEffect(new ArmouredStatus(2, 50));
+		gameMap.addActor(goon, 1, 1);
 
 		world.run();
 	}
