@@ -36,7 +36,7 @@ public class VacuumStatus extends StatusEffect {
         // Check for a space suit
         Optional<Spacesuit> spacesuit = getSpaceSuit(subject);
         if (!spacesuit.isPresent()) {
-            display.println(subject.getName() + " can breath without a space suit! They begin to suffocate");
+            display.println(subject.getName() + " can breathe without a space suit! They begin to suffocate");
             // TODO - Add teleport action here
         } else {
             if (spacesuit.get().breath()) {
