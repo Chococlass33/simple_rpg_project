@@ -73,7 +73,7 @@ public class Character extends Actor {
      * Modify the defence stat of the character.
      */
     public void modifyDefence(int amountToModifyDefenceBy) {
-        defence = amountToModifyDefenceBy;
+        defence = defence + amountToModifyDefenceBy;
     }
 
     /**
