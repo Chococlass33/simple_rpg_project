@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import game.DisplayCharacters;
 import game.actions.RequestOxygenTank;
-import game.behaviours.DispenseOxygenBehaviour;
+import game.actions.TakeItemAction;
 import game.behaviours.StandStillBehaviour;
 import game.controllers.LoopingController;
 import game.items.OxygenTank;
@@ -24,13 +24,16 @@ public class OxygenDispenser extends Character {
      *
      */
     public OxygenDispenser() {
-        super(new LoopingController(new DispenseOxygenBehaviour(), new StandStillBehaviour()), "Oxygen Dispenser", DisplayCharacters.OXYGEN_DISPENSER, 4, 9999);
+        super(new LoopingController(new StandStillBehaviour()), "Oxygen Dispenser", DisplayCharacters.OXYGEN_DISPENSER, 4, 9999);
     }
     @Override
     public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
         Actions tempActions = new Actions();
-        if (!getTank(this).isPresent()) {
+        Optional<OxygenTank> oxygenTank = getTank(this);
+        if (!oxygenTank.isPresent()) {
             tempActions.add(new RequestOxygenTank(this));
+        } else {
+            tempActions.add(new TakeItemAction(this, oxygenTank.get()));
         }
         return tempActions;
     }

@@ -13,7 +13,7 @@ public class RequestOxygenTank extends Action {
     private Actor dispenser;
 
     /**
-     * Requst an oxygen tank.
+     * Request an oxygen tank.
      * @param dispenser The dispenser of the oxygen tank.
      */
     public RequestOxygenTank(Actor dispenser) {
@@ -21,7 +21,7 @@ public class RequestOxygenTank extends Action {
     }
 
     /**
-     * An actor requests an oxygen tank
+     * An actor requests an oxygen tank.
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

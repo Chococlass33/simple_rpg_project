@@ -3,25 +3,27 @@ package game.actions;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import game.items.OxygenTank;
+import edu.monash.fit2099.engine.Item;
 
 /**
- * The actor requests an oxygen tank.
+ * The actor takes an item from another actors inventory
  */
-public class RequestOxygenTank extends Action {
+public class TakeItemAction extends Action {
 
-    private Actor dispenser;
+    private Item item;
+    private Actor target;
 
     /**
-     * Request an oxygen tank.
-     * @param dispenser The dispenser of the oxygen tank.
+     * Construct the option to take an item from another's inventory
+     * @param itemToTake Item to take from the  inventory
      */
-    public RequestOxygenTank(Actor dispenser) {
-        this.dispenser = dispenser;
+    public TakeItemAction(Actor target,Item itemToTake) {
+        item = itemToTake;
+        this.target = target;
     }
 
     /**
-     * An actor requests an oxygen tank.
+     * An actor takes another actors item.
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.
@@ -29,8 +31,9 @@ public class RequestOxygenTank extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        dispenser.addItemToInventory(new OxygenTank(10));
-        return dispenser + " hisses loudly.";
+        actor.addItemToInventory(item);
+        target.removeItemFromInventory(item);
+        return actor + " takes " + item + " from " + target;
     }
 
     /**
@@ -41,7 +44,7 @@ public class RequestOxygenTank extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " requests an oxygen tank.";
+        return actor + " takes " + item;
     }
 
     /**
