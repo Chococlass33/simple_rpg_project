@@ -2,6 +2,7 @@ package game.characters;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.AdvancedAttackAction;
+import game.items.StatusItem;
 import game.status.StatusEffect;
 import game.controllers.Controller;
 
@@ -135,6 +136,8 @@ public class Character extends Actor {
 
         // Apply status effects
         clearExpiredStatusEffects();
+        // Get any effects from status items
+        getItemStatusEffects(display);
         Optional<Action> action = executeStatusEffects(display);
 
         if (action.isPresent()) {
@@ -147,6 +150,20 @@ public class Character extends Actor {
 
         // Return the action or skip the turn if no action is provided
         return action.orElseGet(() -> super.playTurn(actions, map, display));
+    }
+
+    /**
+     * Add any new status effects from items in the inventory.
+     */
+    private void getItemStatusEffects(Display display) {
+        List<Item> inventory = getInventory();
+        for (Item item : inventory) {
+            if (item instanceof StatusItem) {
+                StatusEffect effect = ((StatusItem) item).getEffect();
+                display.println(getName() + "'s " + item + " grants an " + effect.getEffectName());
+                addStatusEffect(effect);
+            }
+        }
     }
 
     /**
@@ -192,9 +209,14 @@ public class Character extends Actor {
      * @param status The status effect to add
      */
     public void addStatusEffect(StatusEffect status) {
-        statusEffects.add(status);
+        if (!hasStatusEffect(status.getEffectName())) {
+            statusEffects.add(status);
+        } else {
+            // Only one status effect per type is permitted. Same types will override old effects.
+            removeStatusEffect(status.getEffectName());
+            statusEffects.add(status);
+        }
     }
-
 
     /**
      * Remove a status effect from the character.

@@ -1,27 +1,29 @@
 package game.items;
 
-import edu.monash.fit2099.engine.Item;
+import game.DisplayCharacters;
+import game.status.ArmouredStatus;
 import game.status.StatusEffect;
 
 /**
- * An item that applies a status effect when held by a character.
+ * An item that applies a massive armour boost to the character.
  */
-public abstract class StatusItem extends Item {
+public class ExoSkeleton extends StatusItem {
 
 
     /**
-     * Build a status item.
-     * @param name The name of the item.
-     * @param displayChar The character to use when the item is dropped.
+     * Build an exoskeleton
      */
-    public StatusItem(String name, char displayChar) {
-        super(name, displayChar);
+    public ExoSkeleton() {
+        super("ExoSkeleton", DisplayCharacters.EXOSKELETON);
     }
 
     /**
      * Get the status effect associated with this item.
-     * @return A status effect.
+     * @return A strong armoured effect.
      */
-    protected abstract StatusEffect getEffect();
+    @Override
+    public StatusEffect getEffect() {
+        return new ArmouredStatus(1, 100000000);
+    }
 
 }

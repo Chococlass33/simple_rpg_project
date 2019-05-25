@@ -22,6 +22,6 @@ public abstract class StatusItem extends Item {
      * Get the status effect associated with this item.
      * @return A status effect.
      */
-    protected abstract StatusEffect getEffect();
+    public abstract StatusEffect getEffect();
 
 }
