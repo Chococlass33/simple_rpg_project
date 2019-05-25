@@ -17,6 +17,9 @@ public abstract class StatusEffect {
     // Effect duration
     private int effectDuration;
 
+    // First time boolean
+    private boolean firstTime = true;
+
     /**
      * Create a new status effect
      * @param duration How many turns the status effect will last
@@ -24,6 +27,20 @@ public abstract class StatusEffect {
     StatusEffect(int duration, String effectName) {
         effectDuration = duration;
         this.effectName = effectName;
+    }
+
+    /**
+     * Things to do when the effect is execute for the first time. By default does not nothing special first time.
+     */
+    protected void performFirstTime(Character subject) {
+        firstTime = false;
+    }
+
+    /**
+     * Things to do when the effect is removed. By default does nothing special first time.
+     */
+    public void performRemoval(Character subject) {
+        effectDuration = effectDuration;
     }
 
     /**
@@ -41,8 +58,12 @@ public abstract class StatusEffect {
     public Optional<Action> performStatusEffect(Character subject, Display display) {
         effectDuration -= 1;
         if (!isExpired()) {
+            performFirstTime(subject);
+            firstTime = false;
             return executeEffect(subject, display);
         } else {
+            // Remove any residual effects from the character
+            performRemoval(subject);
             return Optional.empty();
         }
     }

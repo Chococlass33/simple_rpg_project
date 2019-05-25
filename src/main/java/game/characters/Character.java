@@ -126,6 +126,7 @@ public class Character extends Actor {
         // Check for expired status effects
         for (StatusEffect effect : statusEffects) {
             if (effect.isExpired()) {
+                effect.performRemoval(this);
             } else {
                 validEffects.add(effect);
             }
@@ -156,6 +157,9 @@ public class Character extends Actor {
                 if (!effect.getEffectName().equalsIgnoreCase(statusEffectName)) {
                     // Add evey status effect except the one to remove to a temp list.
                     tempEffects.add(effect);
+                } else {
+                    // Remove any residual effects from the status effect
+                    effect.performRemoval(this);
                 }
             }
             statusEffects = tempEffects;
