@@ -17,7 +17,7 @@ public class Goon extends Character {
      * @param target Actor to target
      */
     public Goon(String name, Actor target) {
-        super(new LoopingController(new InsultBehaviour(target), new FollowBehaviour(target)), name, DisplayCharacters.GOON, 10, 50);
+        super(new LoopingController(new InsultBehaviour(target), new FollowBehaviour(target)), name, DisplayCharacters.GOON, 10, 50, 10);
     }
 
 }

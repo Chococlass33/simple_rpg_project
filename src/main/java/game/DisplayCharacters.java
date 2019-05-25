@@ -17,6 +17,7 @@ public class DisplayCharacters {
     public static final java.lang.Character Q = 'Q';
     public static final java.lang.Character PLAYER = '@';
     public static final java.lang.Character OXYGEN_DISPENSER = 'O';
+    public static final java.lang.Character YUGO_MAXX = 'Y';
 
     // Item display chars
     public static final java.lang.Character ROCKET_PLANS = 'P';
@@ -26,6 +27,7 @@ public class DisplayCharacters {
     public static final java.lang.Character WARHAMMER = 'W';
     public static final java.lang.Character OXYGEN_TANK = 'T';
     public static final java.lang.Character SPACE_SUIT = 'S';
+    public static final java.lang.Character EXOSKELETON = 'X';
 
     // Ground display chars
     public static final java.lang.Character UNLOCKED_DOOR = '-';

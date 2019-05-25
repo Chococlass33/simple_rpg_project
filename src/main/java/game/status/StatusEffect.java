@@ -17,6 +17,12 @@ public abstract class StatusEffect {
     // Effect duration
     private int effectDuration;
 
+    // First time boolean
+    private boolean firstTime = true;
+
+    // Effect removed
+    private boolean effectRemoved = false;
+
     /**
      * Create a new status effect
      * @param duration How many turns the status effect will last
@@ -24,6 +30,31 @@ public abstract class StatusEffect {
     StatusEffect(int duration, String effectName) {
         effectDuration = duration;
         this.effectName = effectName;
+    }
+
+    /**
+     * Things to do when the effect is execute for the first time. By default does not nothing special first time.
+     */
+    protected void performFirstTime(Character subject) {
+        firstTime = false;
+    }
+
+    /**
+     * Remove any lingering effects of a status effect.
+     */
+    public void performRemoval(Character subject) {
+        if (!effectRemoved) {
+            removalAction(subject);
+        }
+        effectRemoved = true;
+    }
+
+    /**
+     * The action to take to remove a status effect.
+     * @param subject The subject to remove the effect from.
+     */
+    protected void removalAction(Character subject) {
+        effectRemoved = true;
     }
 
     /**
@@ -41,8 +72,14 @@ public abstract class StatusEffect {
     public Optional<Action> performStatusEffect(Character subject, Display display) {
         effectDuration -= 1;
         if (!isExpired()) {
+            if (firstTime) {
+                performFirstTime(subject);
+                firstTime = false;
+            }
             return executeEffect(subject, display);
         } else {
+            // Remove any residual effects from the character
+            performRemoval(subject);
             return Optional.empty();
         }
     }

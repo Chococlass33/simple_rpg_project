@@ -1,6 +1,8 @@
 package game.characters;
 
 import edu.monash.fit2099.engine.*;
+import game.actions.AdvancedAttackAction;
+import game.items.StatusItem;
 import game.status.StatusEffect;
 import game.controllers.Controller;
 
@@ -23,6 +25,9 @@ public class Character extends Actor {
 
     // Status effects on the character
     private List<StatusEffect> statusEffects = new ArrayList<>();
+
+    // Defence stat
+    private int defence = 0;
 
     /**
      * Constructor for character
@@ -51,6 +56,53 @@ public class Character extends Actor {
         super(name, displayChar, priority, hitPoints);
         characterController = controller;
         this.intDamage = intDamage;
+    }
+
+    /**
+     * Damage the character. Damage is reduced by the character's defence stat.
+     * @param points number of hitpoints to deduct.
+     */
+    @Override
+    public void hurt(int points) {
+        if (points - defence > 0) {
+            // Hurt the character only if the damage is larger than the defence stat.
+            super.hurt(points - defence);
+        }
+    }
+
+    /**
+     * Modify the defence stat of the character.
+     */
+    public void modifyDefence(int amountToModifyDefenceBy) {
+        defence = defence + amountToModifyDefenceBy;
+    }
+
+    /**
+     * Retrieve the hitpoints of the character.
+     * @return The character's hitpoints.
+     */
+    public int getHealth() {
+        return hitPoints;
+    }
+
+    /**
+     * Characters will use the AdvancedAttackAction to attack each other rather than the default one.
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return Allowable actions
+     */
+    @Override
+    public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+        return new Actions(new AdvancedAttackAction(otherActor, this));
+    }
+
+    /**
+     * Get the defence of the character.
+     * @return int of defence
+     */
+    public int getDefence() {
+        return defence;
     }
 
     /**
@@ -84,6 +136,8 @@ public class Character extends Actor {
 
         // Apply status effects
         clearExpiredStatusEffects();
+        // Get any effects from status items
+        getItemStatusEffects(display);
         Optional<Action> action = executeStatusEffects(display);
 
         if (action.isPresent()) {
@@ -96,6 +150,20 @@ public class Character extends Actor {
 
         // Return the action or skip the turn if no action is provided
         return action.orElseGet(() -> super.playTurn(actions, map, display));
+    }
+
+    /**
+     * Add any new status effects from items in the inventory.
+     */
+    private void getItemStatusEffects(Display display) {
+        List<Item> inventory = getInventory();
+        for (Item item : inventory) {
+            if (item instanceof StatusItem) {
+                StatusEffect effect = ((StatusItem) item).getEffect();
+                display.println(getName() + "'s " + item + " grants an " + effect.getEffectName());
+                addStatusEffect(effect);
+            }
+        }
     }
 
     /**
@@ -126,6 +194,7 @@ public class Character extends Actor {
         // Check for expired status effects
         for (StatusEffect effect : statusEffects) {
             if (effect.isExpired()) {
+                effect.performRemoval(this);
             } else {
                 validEffects.add(effect);
             }
@@ -140,9 +209,14 @@ public class Character extends Actor {
      * @param status The status effect to add
      */
     public void addStatusEffect(StatusEffect status) {
-        statusEffects.add(status);
+        if (!hasStatusEffect(status.getEffectName())) {
+            statusEffects.add(status);
+        } else {
+            // Only one status effect per type is permitted. Same types will override old effects.
+            removeStatusEffect(status.getEffectName());
+            statusEffects.add(status);
+        }
     }
-
 
     /**
      * Remove a status effect from the character.
@@ -156,6 +230,9 @@ public class Character extends Actor {
                 if (!effect.getEffectName().equalsIgnoreCase(statusEffectName)) {
                     // Add evey status effect except the one to remove to a temp list.
                     tempEffects.add(effect);
+                } else {
+                    // Remove any residual effects from the status effect
+                    effect.performRemoval(this);
                 }
             }
             statusEffects = tempEffects;
