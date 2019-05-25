@@ -17,35 +17,40 @@ import game.controllers.LoopingController;
  */
 public class Rocket extends Character {
 
-    /**
-     * Construct a Ninja.
-     *
-     * @param name   Ninja name.
-     * @param target The target of the ninja.
-     */
 
-    private Character rocket;
+    private Actor rocket;
     private GameMap map;
-
-    public Rocket(Rocket rocket, GameMap map) {
+    /**
+     * Construct a Rocket, pointing to a rocket and the map it's on.
+     *
+     * @param rocket   the rocket to point to.
+     * @param map The map to point to.
+     */
+    public Rocket(Actor rocket, GameMap map) {
 
         super(new LoopingController(new StandStillBehaviour()), "ROCKET", DisplayCharacters.ROCKET, 6, 5);
         this.map = map;
-        int x = map.locationOf(target).x();
-        int y = map.locationOf(target).y();
-        map.removeActor(target);
-        map.addActor(new Rocket(this, this.map), x, y);
-        this.rocket = rocket;
+        int x = map.locationOf(rocket).x();
+        int y = map.locationOf(rocket).y();
+        map.removeActor(rocket);
+        Actor newRocket = new Rocket(this, this.map);
+        map.addActor(newRocket,x,y);
+        this.rocket = newRocket;
     }
 
-    public Rocket() {
+    /**
+     * Construct a Rocket, if there is no other rocket to point to.
+     *
+     * @param map The map this rocket is in.
+     */
+    public Rocket(GameMap map) {
         super(new LoopingController(new StandStillBehaviour()), "ROCKET", DisplayCharacters.ROCKET, 6, 5);
+        this.map = map;
+        this.rocket = this;
     }
 
     @Override
     public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
-        Actions tempActions = new Actions(new MoveMapAction(this.map,this.rocket));
-        return tempActions;
+        return new Actions(new MoveMapAction(this.map, this.rocket));
         }
     }
-}
