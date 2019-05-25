@@ -2,22 +2,22 @@ package game.characters;
 
 import edu.monash.fit2099.engine.Actor;
 import game.DisplayCharacters;
-import game.behaviours.InsultBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.controllers.LoopingController;
+import game.items.ExoSkeleton;
 
 /**
- * More powerful grunt. Can also insult another character.
+ * A boss character. Starts with an exoskeleton.
  */
-public class Goon extends Character {
+public class YugoMaxx extends Character {
 
     /**
-     * Create a goon. Set the to target another character.
-     * @param name Goon name
+     * Create Yugo Max. Set the to target another character.
      * @param target Actor to target
      */
-    public Goon(String name, Actor target) {
-        super(new LoopingController(new InsultBehaviour(target), new FollowBehaviour(target)), name, DisplayCharacters.GOON, 10, 50);
+    public YugoMaxx(Actor target) {
+        super(new LoopingController(new FollowBehaviour(target)), "Yugo Maxx", DisplayCharacters.YUGO_MAXX, 10, 50, 10);
+        addItemToInventory(new ExoSkeleton());
     }
 
 }

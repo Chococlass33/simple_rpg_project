@@ -7,10 +7,9 @@ import edu.monash.fit2099.engine.World;
 import game.Floor;
 import game.Wall;
 import game.characters.Character;
-import game.characters.Goon;
 import game.characters.Player;
+import game.characters.YugoMaxx;
 import game.ground.RocketPad;
-import game.status.ArmouredStatus;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,10 +34,8 @@ public class AttackMap {
 		Player player = new Player("Player");
 		world.addPlayer(player, gameMap, 0, 0);
 
-		Character goon = new Goon("Valerie", player);
-		goon.addStatusEffect(new ArmouredStatus(2, 50));
-		gameMap.addActor(goon, 1, 1);
-
+		Character yugo = new YugoMaxx(player);
+		gameMap.addActor(yugo, 0, 1);
 		world.run();
 	}
 }
