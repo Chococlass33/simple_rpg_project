@@ -1,4 +1,4 @@
-package game.Items;
+package game.items;
 
 import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.Item;

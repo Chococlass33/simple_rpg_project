@@ -1,6 +1,7 @@
 package game.status;
 
 import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.engine.Display;
 import game.actions.StunnedAction;
 import game.characters.Character;
 
@@ -27,7 +28,7 @@ public class StunStatus extends StatusEffect {
      * @return stunned action
      */
     @Override
-    protected Optional<Action> executeEffect(Character subject) {
+    protected Optional<Action> executeEffect(Character subject, Display display) {
         return Optional.of(new StunnedAction());
     }
 }

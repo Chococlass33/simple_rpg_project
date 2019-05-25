@@ -1,9 +1,8 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
-import game.Items.RocketBody;
-import game.Items.RocketEngine;
-import game.Items.RocketPlans;
+import game.items.RocketBody;
+import game.items.RocketEngine;
 import game.ground.RocketPad;
 
 import java.util.List;

@@ -16,6 +16,7 @@ public class DisplayCharacters {
     public static final java.lang.Character DOCTOR_MAYBE = 'D';
     public static final java.lang.Character Q = 'Q';
     public static final java.lang.Character PLAYER = '@';
+    public static final java.lang.Character OXYGEN_DISPENSER = 'O';
 
     // Item display chars
     public static final java.lang.Character ROCKET_PLANS = 'P';
@@ -23,11 +24,14 @@ public class DisplayCharacters {
     public static final java.lang.Character ROCKET_ENGINE = 'E';
     public static final java.lang.Character KEY = 'K';
     public static final java.lang.Character WARHAMMER = 'W';
+    public static final java.lang.Character OXYGEN_TANK = 'T';
+    public static final java.lang.Character SPACE_SUIT = 'S';
 
     // Ground display chars
     public static final java.lang.Character UNLOCKED_DOOR = '-';
     public static final java.lang.Character LOCKED_DOOR = '+';
     public static final java.lang.Character ROCKET_PAD = '?';
+
 
     // Colours for Keys/Doors
     public enum colour {

@@ -2,7 +2,7 @@ package game.actions;
 
 import edu.monash.fit2099.engine.*;
 import game.DisplayCharacters;
-import game.Items.Key;
+import game.items.Key;
 import game.ground.LockedDoor;
 import game.ground.UnlockedDoor;
 

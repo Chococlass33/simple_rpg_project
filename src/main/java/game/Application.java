@@ -1,7 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
-import game.Items.*;
+import game.items.*;
 import game.characters.*;
 import game.characters.Player;
 import game.ground.LockedDoor;
@@ -39,7 +39,7 @@ public class Application{
 		Player player = new Player("Player");
 		world.addPlayer(player, gameMap, 10, 0);
 
-		// Misc Items
+		// Misc items
 		gameMap.addItem(new Warhammer(), 0,0);
 
 		// Enemies
@@ -57,6 +57,9 @@ public class Application{
 
 		DoctorMaybe doctor = new DoctorMaybe("Doctor Maybe");
 		gameMap.addActor(doctor, 5, 5);
+
+		OxygenDispenser dispenser = new OxygenDispenser();
+		gameMap.addActor(dispenser, 10, 6);
 
 		// Keys
 		ninja.addItemToInventory(new Key(DisplayCharacters.colour.BLUE));

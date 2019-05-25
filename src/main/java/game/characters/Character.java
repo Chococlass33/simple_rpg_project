@@ -84,7 +84,7 @@ public class Character extends Actor {
 
         // Apply status effects
         clearExpiredStatusEffects();
-        Optional<Action> action = executeStatusEffects();
+        Optional<Action> action = executeStatusEffects(display);
 
         if (action.isPresent()) {
             // If the status effect has an action. Force the character to perform the action.
@@ -102,12 +102,12 @@ public class Character extends Actor {
      * Run all the status effects on the character. If multiple status effects return actions return the last one.
      * @return Optional action.
      */
-    private Optional<Action> executeStatusEffects() {
+    private Optional<Action> executeStatusEffects(Display display) {
 
         Optional<Action> statusAction = Optional.empty();
 
         for (StatusEffect effect : statusEffects) {
-            Optional<Action> tempAction = effect.performStatusEffect(this);
+            Optional<Action> tempAction = effect.performStatusEffect(this, display);
             if (tempAction.isPresent()) {
                 statusAction = tempAction;
             }
@@ -143,21 +143,52 @@ public class Character extends Actor {
         statusEffects.add(status);
     }
 
+
     /**
-     * Return the names of every active status effect the character is afflicted with.
-     * @return List of status effect names
+     * Remove a status effect from the character.
+     * @param statusEffectName String name of the status effect to remove
      */
-    public List<String> getStatusEffects() {
+    public void removeStatusEffect(String statusEffectName) {
+        if (hasStatusEffect(statusEffectName)) {
+            // If the character has the status effect
+            List<StatusEffect> tempEffects = new ArrayList<>();
+            for (StatusEffect effect : statusEffects) {
+                if (!effect.getEffectName().equalsIgnoreCase(statusEffectName)) {
+                    // Add evey status effect except the one to remove to a temp list.
+                    tempEffects.add(effect);
+                }
+            }
+            statusEffects = tempEffects;
+        }
+    }
 
-        List<String> statusNames = new ArrayList<>();
-
+    /**
+     * Check if a character has a certain status effect
+     * @param statusEffectName Status effect name to check for
+     * @return True if the characger has it, false if they do not
+     */
+    public boolean hasStatusEffect(String statusEffectName) {
         for (StatusEffect effect : statusEffects) {
-            if (!effect.isExpired()) {
-                statusNames.add(effect.getEffectName());
+            if (effect.getEffectName().equalsIgnoreCase(statusEffectName)) {
+                return true;
             }
         }
+        return false;
+    }
 
-        return statusNames;
+    /**
+     * Retrieve an item from the characters inventory based on it's class.
+     * @param itemClass The class of item to retrieve.
+     * @return An optional item.
+     */
+    public Optional<Item> getItemByClass(Class<?> itemClass) {
+        List<Item> inventory = getInventory();
+        for (Item item : inventory) {
+            if (itemClass.isInstance(item)) {
+                return Optional.of(item);
+            }
+        }
+        return Optional.empty();
     }
 
 }

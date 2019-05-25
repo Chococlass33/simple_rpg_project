@@ -1,6 +1,7 @@
 package game.status;
 
 import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.engine.Display;
 import game.characters.Character;
 
 import java.util.Optional;
@@ -30,17 +31,17 @@ public abstract class StatusEffect {
      * @param subject The character to apply the effect to
      * @return An optional action.
      */
-    protected abstract Optional<Action> executeEffect(Character subject);
+    protected abstract Optional<Action> executeEffect(Character subject, Display display);
 
     /**
      * Trigger the status effect on a character
      * @param subject The subject of the status effect
      * @return An optional action.
      */
-    public Optional<Action> performStatusEffect(Character subject) {
+    public Optional<Action> performStatusEffect(Character subject, Display display) {
         effectDuration -= 1;
         if (!isExpired()) {
-            return executeEffect(subject);
+            return executeEffect(subject, display);
         } else {
             return Optional.empty();
         }

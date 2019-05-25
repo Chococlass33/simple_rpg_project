@@ -41,7 +41,7 @@ public class StunBehaviour implements ActionFactory {
         Location there = map.locationOf(target);
 
         int distance = distance(here, there);
-        if (distance <= range && !target.getStatusEffects().contains(StunStatus.STUN_STATUS)) {
+        if (distance <= range && !target.hasStatusEffect(StunStatus.STUN_STATUS)) {
             // If target is in range and not already stunned
             return new StunAction(target, stunDuration);
         }

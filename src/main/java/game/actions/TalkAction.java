@@ -1,7 +1,7 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
-import game.Items.RocketPlans;
+import game.items.RocketPlans;
 
 import java.util.List;
 /**
