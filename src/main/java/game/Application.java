@@ -58,6 +58,9 @@ public class Application{
 		DoctorMaybe doctor = new DoctorMaybe("Doctor Maybe");
 		gameMap.addActor(doctor, 5, 5);
 
+		OxygenDispenser dispenser = new OxygenDispenser();
+		gameMap.addActor(dispenser, 10, 6);
+
 		// Keys
 		ninja.addItemToInventory(new Key(DisplayCharacters.colour.BLUE));
 		goon.addItemToInventory(new Key(DisplayCharacters.colour.GREEN));
