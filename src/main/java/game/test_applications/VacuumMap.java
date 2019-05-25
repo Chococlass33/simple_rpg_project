@@ -1,16 +1,19 @@
 package game.test_applications;
 
-import edu.monash.fit2099.engine.*;
+import edu.monash.fit2099.engine.Display;
+import edu.monash.fit2099.engine.FancyGroundFactory;
+import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.World;
 import game.Floor;
 import game.Wall;
 import game.characters.Player;
-import game.characters.*;
 import game.ground.RocketPad;
+import game.status.VacuumStatus;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class OxygenMap {
+public class VacuumMap {
 
 	public static void main(String[] args) {
 
@@ -30,8 +33,7 @@ public class OxygenMap {
 		Player player = new Player("Player");
 		world.addPlayer(player, gameMap, 0, 0);
 
-		OxygenDispenser dispenser = new OxygenDispenser();
-		gameMap.addActor(dispenser, 1, 1);
+		player.addStatusEffect(new VacuumStatus(5));
 
 		world.run();
 	}
