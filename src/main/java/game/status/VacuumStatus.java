@@ -3,6 +3,8 @@ package game.status;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.SkipTurnAction;
+import game.behaviours.StandStillBehaviour;
 import game.characters.Character;
 import game.items.OxygenTank;
 import game.items.Spacesuit;
@@ -36,12 +38,16 @@ public class VacuumStatus extends StatusEffect {
         // Check for a space suit
         Optional<Spacesuit> spacesuit = getSpaceSuit(subject);
         if (!spacesuit.isPresent()) {
-            display.println(subject.getName() + " can breathe without a space suit! They begin to suffocate");
-            // TODO - Add teleport action here
+            // Character doe snot have a space suit
+            display.println(subject.getName() + " can breathe without a space suit! They begin to suffocate!");
+            return takeBreath(subject);
+
         } else {
-            if (spacesuit.get().breath()) {
-                display.println(subject.getName() + " takes a deep breath of oxygen. " + spacesuit.get().remainingOxygen() + " breaths of oxygen remain in the suit's oxygen tank!");
-            } else {
+            // Character does have a spacesuit
+
+            Optional<Action> returnAction = takeBreath(subject);
+
+            if (returnAction.isPresent()) {
                 // If the character can't breath attempt to attach any oxygen tanks currently in their inventory to the spacesuit
                 Optional<OxygenTank> newTank = getOxygenTank(subject);
                 while (newTank.isPresent()) {
@@ -50,19 +56,40 @@ public class VacuumStatus extends StatusEffect {
                         // Remove empty tanks from inventory
                         display.println(subject.getName() + " fumbles for a filled oxygen tank.");
                         subject.removeItemFromInventory(newTank.get());
+                        newTank = getOxygenTank(subject);
                     } else {
                         // Attach an oxygen tank to the spacesuit
                         display.println(subject.getName() + " attaches a fresh oxygen tank to their spacesuit.");
                         spacesuit.get().attachOxygenTank(newTank.get());
-                        spacesuit.get().breath();
-                        display.println(subject.getName() + " takes a deep breath of oxygen. " + spacesuit.get().remainingOxygen() + " breaths of oxygen remain in the suit's oxygen tank!");
                         subject.removeItemFromInventory(newTank.get());
+                        returnAction = takeBreath(subject);
+                        newTank = Optional.empty();
                     }
                 }
             }
-        }
 
-        // If breathing was successful, return no compulsory actions
+            if (!returnAction.isPresent()) {
+                display.println(subject.getName() + " takes a deep breath of oxygen. " + spacesuit.get().remainingOxygen() + " breaths of oxygen remain.");
+                return Optional.empty();
+
+            } else {
+                display.println(subject.getName() + "'s spacesuit has run out of oxygen. They begin to suffocate!");
+                return returnAction;
+            }
+        }
+    }
+
+    /**
+     * The character attempts to take a breath.
+     * @param subject The character trying to breathe.
+     * @return An optional action. The action is returned if the character cannot breathe.
+     */
+    private Optional<Action> takeBreath(Character subject) {
+
+        Optional<Spacesuit> suit = getSpaceSuit(subject);
+        if (!suit.isPresent() || !suit.get().breath()) {
+            return Optional.of(new SkipTurnAction()); //TODO Replace with teleport action
+        }
         return Optional.empty();
     }
 
