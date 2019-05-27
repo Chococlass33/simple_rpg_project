@@ -38,35 +38,32 @@ public class MoveMapAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        map.removeActor(actor);
         for (int i = 0; i < 8; i++)
         {
-            try
-            {
-                this.map.addActor(actor,map.locationOf(rocket).x() + XSURROUND[i],map.locationOf(rocket).y() + YSURROUND[i]);
-                Character character = (Character) actor;
-                if(character.hasStatusEffect("VacuumStatus"))
-                {
-                    character.removeStatusEffect("VacuumStatus");
-                }
-                else
-                {
-                    character.addStatusEffect(new VacuumStatus(10, this.map, rocket));
-                }
-                List<Item> inventory = actor.getInventory();
-                for (Item item : inventory) {
-                    if (item.toString().contains("Yugo Maxx")) {
-                        map.removeActor(actor);
-                        return actor + " turns Yugo Maxx into the police! Victory!";
+            try {
+                if (!map.isAnActorAt(map.at(map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i])) & map.at(map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i]).canActorEnter(actor)) {
+                    map.removeActor(actor);
+                    List<Item> inventory = actor.getInventory();
+                    for (Item item : inventory) {
+                        if (item.toString().contains("Yugo Maxx")) {
+                            return actor + " turns Yugo Maxx into the police! Victory!";
+                        }
                     }
+                    this.map.addActor(actor, map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i]);
+                    Character character = (Character) actor;
+                    if (character.hasStatusEffect("VacuumStatus")) {
+                        character.removeStatusEffect("VacuumStatus");
+                    } else {
+                        character.addStatusEffect(new VacuumStatus(10, this.map, rocket));
+                    }
+                    return actor + " gets sent to a whole new world!";
                 }
-                return actor + " gets sent to a whole new world!";
             }
             finally
             {
             }
         }
-        return "You would've totally travelled back but the landing point is completely surrounded.";
+        return "You would've totally travelled back but the landing point is completely surrounded somehow.";
     }
     /**
      * How the action is described in a menu.
