@@ -1,22 +1,21 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
+import game.characters.Rocket;
+
 /**
  * The actor inspects the rocket
  */
 public class CheckPadAction extends Action {
-    private Location location;
     private boolean hasbody;
     private boolean hasengine;
     /**
      * Construct a CheckPad action
      *
-     * @param location Location of the rocket pad.
      * @param hasBody Boolean representing the status of the rocket body.
      * @param hasEngine Boolean representing the status of the rocket engine.
      */
-    public CheckPadAction(Location location, boolean hasBody, boolean hasEngine) {
-        this.location = location;
+    public CheckPadAction(boolean hasBody, boolean hasEngine) {
         this.hasbody = hasBody;
         this.hasengine = hasEngine;
     }
@@ -57,7 +56,7 @@ public class CheckPadAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " checks the rocket pad.";
+        return actor + " checks the rocket.";
     }
 
     /**

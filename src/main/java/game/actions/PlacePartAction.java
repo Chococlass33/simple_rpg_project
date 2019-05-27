@@ -1,6 +1,7 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
+import game.characters.Rocket;
 import game.items.RocketBody;
 import game.items.RocketEngine;
 import game.ground.RocketPad;
@@ -11,19 +12,19 @@ import java.util.List;
  * The actor puts parts into the rocket pad.
  */
 public class PlacePartAction extends Action {
-    private Location location;
+    private Rocket rocket;
     private boolean hasbody;
     private boolean hasengine;
 
     /**
      * Construct a PlacePart action
      *
-     * @param location  Location of the rocket pad.
+     * @param rocket    Points to the rocket.
      * @param hasBody   Boolean representing the status of the rocket body.
      * @param hasEngine Boolean representing the status of the rocket engine.
      */
-    public PlacePartAction(Location location, boolean hasBody, boolean hasEngine) {
-        this.location = location;
+    public PlacePartAction(Rocket rocket, boolean hasBody, boolean hasEngine) {
+        this.rocket = rocket;
         this.hasbody = hasBody;
         this.hasengine = hasEngine;
     }
@@ -65,7 +66,9 @@ public class PlacePartAction extends Action {
         if (hasbody && hasengine) {
             tempstring += "The rocket is already finished.\n";
         }
-        map.add(new RocketPad(putbody, putengine), location);
+        Rocket theRocket = (Rocket) actor;
+        theRocket.setBody(putbody);
+        theRocket.setEngine(putengine);
         if (putbody && putengine) {
             tempstring += "Woo, the rocket is finished.\nYou get in the rocket, and it explodes in a spectacular manner.\nTo be fair you put it together in like 5 minutes, craftsmanship isn't your forte.\nAs far as the game is concerned though, YOU'RE WINNER!\n";
             map.removeActor(actor);
