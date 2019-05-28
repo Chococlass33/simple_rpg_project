@@ -1,9 +1,6 @@
 package game.actions;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.*;
 import game.characters.Character;
 import game.status.VacuumStatus;
 
@@ -41,7 +38,11 @@ public class MoveMapAction extends Action {
     public String execute(Actor actor, GameMap map) {
         for (int i = 0; i < 8; i++) {
             try {
-                if (!map.isAnActorAt(map.at(map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i])) & map.at(map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i]).canActorEnter(actor)) {
+                int xPos = map.locationOf(rocket).x() + XSURROUND[i];
+                int yPos = map.locationOf(rocket).y() + YSURROUND[i];
+                Ground targetPosition = this.map.at(xPos, yPos).getGround();
+                boolean enterable = targetPosition.canActorEnter(actor);
+                if (!this.map.isAnActorAt(map.at(map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i])) && enterable) {
                     map.removeActor(actor);
                     List<Item> inventory = actor.getInventory();
                     for (Item item : inventory) {
@@ -49,7 +50,7 @@ public class MoveMapAction extends Action {
                             return actor + " turns Yugo Maxx into the police! Victory!";
                         }
                     }
-                    this.map.addActor(actor, map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i]);
+                    this.map.addActor(actor, xPos, yPos);
                     Character character = (Character) actor;
                     if (character.hasStatusEffect(VacuumStatus.VACUUM_STATUS)) {
                         character.removeStatusEffect(VacuumStatus.VACUUM_STATUS);
