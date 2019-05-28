@@ -1,9 +1,7 @@
 package game.status;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.Item;
-import edu.monash.fit2099.engine.SkipTurnAction;
+import edu.monash.fit2099.engine.*;
+import game.actions.MoveMapAction;
 import game.behaviours.StandStillBehaviour;
 import game.characters.Character;
 import game.items.OxygenTank;
@@ -18,13 +16,16 @@ import java.util.Optional;
 public class VacuumStatus extends StatusEffect {
 
     public static final String VACUUM_STATUS = "Vacuum Status";
-
+    private GameMap map;
+    private Actor rocket;
     /**
      * Create a vacuum status
      * @param duration How long the status will last
      */
-    public VacuumStatus(int duration) {
+    public VacuumStatus(int duration, GameMap map, Actor rocket) {
         super(duration, VACUUM_STATUS);
+        this.rocket = rocket;
+        this.map = map;
     }
 
     /**
@@ -88,7 +89,7 @@ public class VacuumStatus extends StatusEffect {
 
         Optional<Spacesuit> suit = getSpaceSuit(subject);
         if (!suit.isPresent() || !suit.get().breath()) {
-            return Optional.of(new SkipTurnAction()); //TODO Replace with teleport action
+            return Optional.of(new MoveMapAction(map,rocket)); //TODO Replace with teleport action
         }
         return Optional.empty();
     }

@@ -6,7 +6,6 @@ package game;
 public class DisplayCharacters {
 
 
-
     private DisplayCharacters() {}
 
     // Character displays
@@ -18,6 +17,7 @@ public class DisplayCharacters {
     public static final java.lang.Character PLAYER = '@';
     public static final java.lang.Character OXYGEN_DISPENSER = 'O';
     public static final java.lang.Character YUGO_MAXX = 'Y';
+    public static final java.lang.Character ROCKET = 'R';
 
     // Item display chars
     public static final java.lang.Character ROCKET_PLANS = 'P';
@@ -28,9 +28,11 @@ public class DisplayCharacters {
     public static final java.lang.Character OXYGEN_TANK = 'T';
     public static final java.lang.Character SPACE_SUIT = 'S';
     public static final java.lang.Character EXOSKELETON = 'X';
+    public static final java.lang.Character WATERGUN = 'U';
 
     // Ground display chars
     public static final java.lang.Character UNLOCKED_DOOR = '-';
+    public static final java.lang.Character WATER = '~';
     public static final java.lang.Character LOCKED_DOOR = '+';
     public static final java.lang.Character ROCKET_PAD = '?';
 
@@ -41,4 +43,8 @@ public class DisplayCharacters {
         BLUE,
         GREEN;
     }
+
+    public static final int[] XSURROUND = {-1,0,1,1,1,0,-1,-1};
+    public static final int[] YSURROUND = {1,1,1,0,-1,-1,-1,0};
+
 }

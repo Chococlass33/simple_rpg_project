@@ -1,12 +1,10 @@
 package game.test_applications;
 
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.FancyGroundFactory;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.World;
+import edu.monash.fit2099.engine.*;
 import game.Floor;
 import game.Wall;
 import game.characters.Player;
+import game.characters.Rocket;
 import game.ground.RocketPad;
 import game.status.VacuumStatus;
 
@@ -33,7 +31,11 @@ public class VacuumMap {
 		Player player = new Player("Player");
 		world.addPlayer(player, gameMap, 0, 0);
 
-		player.addStatusEffect(new VacuumStatus(5));
+		// Rocket
+		Actor rocket = new Rocket(gameMap);
+		gameMap.addActor(rocket,1, 1);
+
+		player.addStatusEffect(new VacuumStatus(5, gameMap, rocket));
 
 		world.run();
 	}

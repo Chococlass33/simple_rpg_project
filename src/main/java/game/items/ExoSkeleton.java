@@ -7,7 +7,7 @@ import game.status.StatusEffect;
 /**
  * An item that applies a massive armour boost to the character.
  */
-public class ExoSkeleton extends StatusItem {
+public class ExoSkeleton extends game.items.StatusItem {
 
 
     /**

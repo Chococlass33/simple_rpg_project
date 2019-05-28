@@ -79,5 +79,9 @@ public class Application{
 		gameMap.addActor(q, 3, 10);
 
 		world.run();
+		if(!player.isConscious())
+		{
+			System.out.println("RIP " + player);
+		}
 	}
 }

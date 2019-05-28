@@ -1,23 +1,19 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
-import game.characters.Rocket;
+import game.items.WaterGun;
+
+import java.util.List;
 
 /**
  * The actor inspects the rocket
  */
-public class CheckPadAction extends Action {
-    private boolean hasbody;
-    private boolean hasengine;
+public class FillWaterAction extends Action {
     /**
      * Construct a CheckPad action
      *
-     * @param hasBody Boolean representing the status of the rocket body.
-     * @param hasEngine Boolean representing the status of the rocket engine.
      */
-    public CheckPadAction(boolean hasBody, boolean hasEngine) {
-        this.hasbody = hasBody;
-        this.hasengine = hasEngine;
+    public FillWaterAction() {
     }
     /**
      * An actor checks the rocket pad.
@@ -28,22 +24,15 @@ public class CheckPadAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        String tempstring = "You look at the pad.\n";
-        if(hasbody)
-        {
-            tempstring += "The body is ready.\n";
-        }
-        else
-        {
-            tempstring += "The body is still needed to proceed.\n";
-        }
-        if(hasengine)
-        {
-            tempstring += "The engine is ready.\n";
-        }
-        else
-        {
-            tempstring += "The engine is still needed to proceed.\n";
+        String tempstring = "You look at the water.\n";
+        List<Item> inventory = actor.getInventory();
+        for (Item item : inventory) {
+            if (item instanceof WaterGun) {
+                // if key of correct colour is found
+                WaterGun temp = (WaterGun) item;
+                temp.fill();
+                tempstring += "You fill the water gun with water.\n";
+            }
         }
         return tempstring;
     }
@@ -56,7 +45,7 @@ public class CheckPadAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " checks the rocket.";
+        return actor + " checks the rocket pad.";
     }
 
     /**
