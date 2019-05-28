@@ -27,6 +27,10 @@ public class FollowBehaviour implements ActionFactory {
 	public Action getAction(Actor actor, GameMap map) {
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
+		if (there == null)
+		{
+			return null;
+		}
 
 		int currentDistance = distance(here, there);
 		for (Exit exit : here.getExits()) {
