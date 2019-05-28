@@ -16,7 +16,7 @@ import static game.DisplayCharacters.YSURROUND;
 public class ShootWaterAction extends Action {
 
 	private WaterGun gun;
-	private Random random;
+	private Random random = new Random();
 
 	public ShootWaterAction(WaterGun gun) {
 		this.gun = gun;
@@ -41,8 +41,8 @@ public class ShootWaterAction extends Action {
 
 						for (Item item : inventory) {
 							if (item instanceof ExoSkeleton) {
-								// if key of correct colour is found
-								tempstring += "The exoskeleton gets fried!\n";
+								// If inventory contains an exoskeleton
+								tempstring += "Water covers the exoskeleton!\n";
 								if(random.nextInt() % 10 < 7)
 								{
 									tempactor.removeItemFromInventory(item);
@@ -57,8 +57,10 @@ public class ShootWaterAction extends Action {
 						}
 					}
 				}
-				finally
+				catch (ArrayIndexOutOfBoundsException ex)
 				{
+					// Triggered when an invalid index is accessed
+					// System.out.println(ex.getMessage());
 				}
 			}
 			tempstring += "The water gun is all out of water now.";
