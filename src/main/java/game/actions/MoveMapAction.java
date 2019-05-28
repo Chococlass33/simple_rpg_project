@@ -42,7 +42,7 @@ public class MoveMapAction extends Action {
                 int yPos = map.locationOf(rocket).y() + YSURROUND[i];
                 Ground targetPosition = this.map.at(xPos, yPos).getGround();
                 boolean enterable = targetPosition.canActorEnter(actor);
-                if (!this.map.isAnActorAt(map.at(map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i])) && enterable) {
+                if (!this.map.isAnActorAt(map.at(xPos  , yPos)) && enterable) {
                     map.removeActor(actor);
                     List<Item> inventory = actor.getInventory();
                     for (Item item : inventory) {
