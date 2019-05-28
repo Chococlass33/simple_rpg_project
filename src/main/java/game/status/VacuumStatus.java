@@ -40,7 +40,7 @@ public class VacuumStatus extends StatusEffect {
         Optional<Spacesuit> spacesuit = getSpaceSuit(subject);
         if (!spacesuit.isPresent()) {
             // Character doe snot have a space suit
-            display.println(subject.getName() + " can breathe without a space suit! They begin to suffocate!");
+            display.println(subject.getName() + " can't breathe without a space suit! They begin to suffocate!");
             return takeBreath(subject);
 
         } else {
