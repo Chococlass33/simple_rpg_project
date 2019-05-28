@@ -51,8 +51,8 @@ public class MoveMapAction extends Action {
                     }
                     this.map.addActor(actor, map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i]);
                     Character character = (Character) actor;
-                    if (character.hasStatusEffect("VacuumStatus")) {
-                        character.removeStatusEffect("VacuumStatus");
+                    if (character.hasStatusEffect(VacuumStatus.VACUUM_STATUS)) {
+                        character.removeStatusEffect(VacuumStatus.VACUUM_STATUS);
                     } else {
                         character.addStatusEffect(new VacuumStatus(10, this.map, rocket));
                     }
