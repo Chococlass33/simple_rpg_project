@@ -54,12 +54,12 @@ public class MoveMapAction extends Action {
                     if (character.hasStatusEffect(VacuumStatus.VACUUM_STATUS)) {
                         character.removeStatusEffect(VacuumStatus.VACUUM_STATUS);
                     } else {
-                        character.addStatusEffect(new VacuumStatus(10, this.map, rocket));
+                        character.addStatusEffect(new VacuumStatus(10, map, rocket));
                     }
                     return actor + " gets sent to a whole new world!";
                 }
             } catch (IndexOutOfBoundsException ex) {
-                // For whdn the index does not exist within the maps confines
+                // For when the index does not exist within the maps confines
             }
         }
         return "You would've totally travelled back but the landing point is completely surrounded somehow.";
