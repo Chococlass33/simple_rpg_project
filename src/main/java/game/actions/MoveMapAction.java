@@ -29,6 +29,7 @@ public class MoveMapAction extends Action {
         this.map = map;
         this.rocket = rocket;
     }
+
     /**
      * An actor checks the rocket pad.
      *
@@ -38,8 +39,7 @@ public class MoveMapAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        for (int i = 0; i < 8; i++)
-        {
+        for (int i = 0; i < 8; i++) {
             try {
                 if (!map.isAnActorAt(map.at(map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i])) & map.at(map.locationOf(rocket).x() + XSURROUND[i], map.locationOf(rocket).y() + YSURROUND[i]).canActorEnter(actor)) {
                     map.removeActor(actor);
@@ -58,13 +58,13 @@ public class MoveMapAction extends Action {
                     }
                     return actor + " gets sent to a whole new world!";
                 }
-            }
-            finally
-            {
+            } catch (IndexOutOfBoundsException ex) {
+                // For whdn the index does not exist within the maps confines
             }
         }
         return "You would've totally travelled back but the landing point is completely surrounded somehow.";
     }
+
     /**
      * How the action is described in a menu.
      *
