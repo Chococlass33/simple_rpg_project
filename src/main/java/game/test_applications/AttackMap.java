@@ -10,6 +10,8 @@ import game.characters.Character;
 import game.characters.Player;
 import game.characters.YugoMaxx;
 import game.ground.RocketPad;
+import game.ground.Water;
+import game.items.WaterGun;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,11 +22,11 @@ public class AttackMap {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new RocketPad());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new RocketPad(), new Water());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
-				"...",
+				".~.",
 				"...",
 				"...");
 		gameMap = new GameMap(groundFactory, map);
@@ -33,6 +35,7 @@ public class AttackMap {
 		// Player
 		Player player = new Player("Player");
 		world.addPlayer(player, gameMap, 0, 0);
+		player.addItemToInventory(new WaterGun());
 
 		Character yugo = new YugoMaxx(player);
 		gameMap.addActor(yugo, 0, 1);
