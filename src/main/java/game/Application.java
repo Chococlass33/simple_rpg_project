@@ -32,12 +32,12 @@ public class Application{
 				".......................",
 				"............~...........",
 				".......................",
-				"...........?...........",
+				".......................",
 				".......................");
 		List<String> moonLayout = Arrays.asList(
-				".......................",
-				".......................",
-				"...........#...........",
+				"....#..................",
+				"....#..................",
+				".####......#...........",
 				"..........###..........",
 				".........#####.........",
 				"..........###..........",
@@ -56,8 +56,9 @@ public class Application{
 		world.addPlayer(player, gameMap, 10, 0);
 
 		// Misc items
-		gameMap.addItem(new Warhammer(), 0,0);
-		moonMap.addItem(new WaterGun(), 0, 0);
+		gameMap.addItem(new Warhammer(), 1,1);
+		moonMap.addItem(new WaterGun(), 3, 1);
+		gameMap.addItem(new Spacesuit(), 10, 7);
 
 		// Enemies
 		Grunt grunt = new Grunt("Mongo", player);
@@ -89,6 +90,12 @@ public class Application{
 
 		Goon goon2 = new Goon("Max", player);
 		moonMap.addActor(goon2 ,8, 0);
+
+		Rocket rocket1 = new Rocket(moonMap, false, false);
+		gameMap.addActor(rocket1, 12, 9);
+
+		Rocket rocket2 = new Rocket(gameMap);
+		moonMap.addActor(rocket2, 0, 0);
 
 		// Keys
 		ninja.addItemToInventory(new Key(DisplayCharacters.colour.BLUE));
