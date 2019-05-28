@@ -6,36 +6,43 @@ import game.Wall;
 import game.characters.Player;
 import game.characters.Rocket;
 import game.ground.RocketPad;
-import game.status.VacuumStatus;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class VacuumMap {
+public class TransportMap {
 
 	public static void main(String[] args) {
 
 		World world = new World(new Display());
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new RocketPad());
-		GameMap gameMap;
+		GameMap primaryMap;
+		GameMap secondaryMap;
 
 		List<String> map = Arrays.asList(
 				"...",
 				"...",
 				"...");
-		gameMap = new GameMap(groundFactory, map);
-		world.addMap(gameMap);
+		List<String> secondaryMapLayout = Arrays.asList(
+				"###",
+				"...",
+				"###"
+		);
+		primaryMap = new GameMap(groundFactory, map);
+		secondaryMap = new GameMap(groundFactory, secondaryMapLayout);
+		world.addMap(primaryMap);
+		world.addMap(secondaryMap);
 
 		// Player
 		Player player = new Player("Player");
-		world.addPlayer(player, gameMap, 0, 0);
+		world.addPlayer(player, primaryMap, 0, 0);
 
-		// Rocket
-		Actor rocket = new Rocket(gameMap);
-		gameMap.addActor(rocket,1, 1);
-
-		player.addStatusEffect(new VacuumStatus(5, gameMap, rocket));
+		// Rockets
+		Actor primaryRocket = new Rocket(secondaryMap);
+		primaryMap.addActor(primaryRocket,1, 1);
+		Actor secondaryRocket = new Rocket(primaryMap);
+		secondaryMap.addActor(secondaryRocket, 1, 1);
 
 		world.run();
 	}
