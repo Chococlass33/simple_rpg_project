@@ -1,8 +1,7 @@
 package game.characters;
 
-import edu.monash.fit2099.engine.Actor;
 import game.DisplayCharacters;
-import game.behaviours.FollowBehaviour;
+import game.behaviours.WanderingBehaviour;
 import game.controllers.LoopingController;
 import game.items.ExoSkeleton;
 
@@ -12,11 +11,10 @@ import game.items.ExoSkeleton;
 public class YugoMaxx extends Character {
 
     /**
-     * Create Yugo Max. Set the to target another character.
-     * @param target Actor to target
+     * Create Yugo Max.
      */
-    public YugoMaxx(Actor target) {
-        super(new LoopingController(new FollowBehaviour(target)), "Yugo Maxx", DisplayCharacters.YUGO_MAXX, 10, 50, 10);
+    public YugoMaxx() {
+        super(new LoopingController(new WanderingBehaviour()), "Yugo Maxx", DisplayCharacters.YUGO_MAXX, 10, 50, 10);
         addItemToInventory(new ExoSkeleton());
     }
 

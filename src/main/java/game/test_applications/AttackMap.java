@@ -37,7 +37,7 @@ public class AttackMap {
 		world.addPlayer(player, gameMap, 0, 0);
 		player.addItemToInventory(new WaterGun());
 
-		Character yugo = new YugoMaxx(player);
+		Character yugo = new YugoMaxx();
 		gameMap.addActor(yugo, 0, 1);
 		world.run();
 	}
