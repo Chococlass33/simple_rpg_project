@@ -44,3 +44,30 @@ One of the enemies will be immune to damage, as a resuult of an exoskeleton. We 
 * An armoured status that raises a character's armour stat while active.
 
 Invulnerability to damage will be achieved by applying a massive ArmourStatus bonus to exoskeleton wearing characters.
+
+## Water Gun
+The water gun will be an item with an action to spray water, and has an attribute representing if the gun is full or not.
+We originally wanted the watergun to have the refill gun action, however when we tried to implement it, it was difficult to check all the ground tiles around the actor, since an out of bounds error could occur.
+While we could just use exception handling to iterate through the errors, it would probably be better to just let the water ground give the action instead so that we wouldn't need to check the ground.
+While this does mean we get the action without the water gun, I think it'll be more cleaner to implement and test.
+
+## Rockets
+We originally wanted the rocket to be a ground object just like the launchpad, however just like the water gun, it was hard to iterate through the map trying to find another rocket pad.
+This time we were able to use the actor's location to easily get the X and Y coordinates. However this meant we needed to create rocket actors and point them to each other.
+Doing this at launchpad level was difficult, we would need the pad to create the rocket on Earth, and then connect itself to the rocket on the Moon.
+So while we could do that by creating the ground object at application with some extra parameters, we decided that it might be easier to just put everything on the rocket.
+We removed the launchpad's actions, modified them slightly and made the rocket give those actions instead if it's not complete.
+
+## Move Map
+Moving maps was a little difficult. Actions only take in 1 GameMap object as a parameter when executing, so we'd need to store the other map when we initialise the action.
+Thus the actor calling the action must also have the map as a stored value. This means that we'd need to store the map in the rocket.
+Since we can't see other maps from the scope of a rocket or a launchpad, we'd need to be able to input the maps from the application level.
+So we made the rocket take in a parameter pointing to another map.
+While we did so, we added a parameter to point to a rocket specifically, to easily get the coordinates for later.
+We've also made the targeted rocket target back to the current map and rocket for 2-way movement.
+
+## Teleporting
+We decided that the most simplest way to teleport the player back is for a rocket to give a status effect that will call the move map action back to the rocket if they run out of oxygen.
+We could have made a specific parameter for the rocket to say if it points to a place with no oxygen.
+However since there are only 2 maps, it was simple enough to just say that if you're not suffocating, you're going to the moon, and vice versa.
+So now if you're suffocating, the MoveMap action is run, you will stop suffacating and the action will teleport you back to the rocket that made the status effect.
