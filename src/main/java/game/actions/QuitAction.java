@@ -9,17 +9,17 @@ import game.items.WaterGun;
 import java.util.List;
 
 /**
- * The actor inspects the rocket
+ * The actor quits the game
  */
 public class QuitAction extends Action {
     /**
-     * Construct a CheckPad action
+     * Construct a QuitAction action
      *
      */
     public QuitAction() {
     }
     /**
-     * An actor checks the rocket pad.
+     * An actor quits the game.
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

@@ -6,17 +6,17 @@ import game.items.WaterGun;
 import java.util.List;
 
 /**
- * The actor inspects the rocket
+ * The actor refills his watergun at a water tile.
  */
 public class FillWaterAction extends Action {
     /**
-     * Construct a CheckPad action
+     * Construct a FillWaterAction action
      *
      */
     public FillWaterAction() {
     }
     /**
-     * An actor checks the rocket pad.
+     * An actor refills the gun.
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

@@ -11,7 +11,7 @@ import game.behaviours.StunBehaviour;
 import game.controllers.LoopingController;
 
 /**
- * A Ninja. Will attempt to maintain a minimum distance from the target. If cornered will attempt to stun the target.
+ * A rocket character. Can have parts added, or will send a player to a paired rocket if finished. Ends the game if Yugo is in the player's inventory.
  */
 public class Rocket extends Character {
 
@@ -22,56 +22,60 @@ public class Rocket extends Character {
     private boolean hasEngine;
 
     /**
-     * Construct a Rocket, pointing to a rocket and the map it's on.
+     * Construct a complete Rocket, pointing to a rocket and the map it's on. Sets the other rocket to point here.
      *
      * @param rocket the rocket to point to.
-     * @param map    The map to point to.
+     * @param toMap    The map to point to.
+     * @param thisMap    The map this rocket will be on.
      */
-    public Rocket(Rocket rocket, GameMap map) {
+    public Rocket(Rocket rocket, GameMap toMap,GameMap thisMap) {
 
         super(new LoopingController(new StandStillBehaviour()), "ROCKET", DisplayCharacters.ROCKET, 6, 5);
-        this.map = map;
-        int x = map.locationOf(rocket).x();
-        int y = map.locationOf(rocket).y();
-        boolean otherbody = rocket.getBody();
-        boolean otherengine = rocket.getEngine();
-        map.removeActor(rocket);
-        Actor newRocket = new Rocket(this, this.map, otherbody, otherengine);
-        map.addActor(newRocket, x, y);
-        this.rocket = newRocket;
+        this.map = toMap;
+        rocket.setRocket(this);
+        rocket.setMap(thisMap);
+        this.rocket = rocket;
         this.hasBody = true;
         this.hasEngine = true;
     }
-
-    public Rocket(Rocket rocket, GameMap map, boolean hasEngine, boolean hasBody) {
+    /**
+     * Construct a Rocket, pointing to a rocket and the map it's on. Sets the other rocket to point here. Has parameters on rocket completeness.
+     *
+     * @param rocket the rocket to point to.
+     * @param toMap    The map to point to.
+     * @param thisMap    The map this rocket will be on.
+     * @param hasEngine The status of the engine for this rocket
+     * @param hasBody The status of the body for this rocket
+     *
+     */
+    public Rocket(Rocket rocket, GameMap toMap, GameMap thisMap, boolean hasEngine, boolean hasBody) {
 
         super(new LoopingController(new StandStillBehaviour()), "ROCKET", DisplayCharacters.ROCKET, 6, 5);
-        this.map = map;
-        int x = map.locationOf(rocket).x();
-        int y = map.locationOf(rocket).y();
-        boolean otherbody = rocket.getBody();
-        boolean otherengine = rocket.getEngine();
-        map.removeActor(rocket);
-        Actor newRocket = new Rocket(this, this.map, otherbody, otherengine);
-        map.addActor(newRocket, x, y);
-        this.rocket = newRocket;
+        this.map = toMap;
+        rocket.setRocket(this);
+        rocket.setMap(thisMap);
+        this.rocket = rocket;
         this.hasBody = hasBody;
         this.hasEngine = hasEngine;
     }
 
     /**
-     * Construct a Rocket, if there is no other rocket to point to.
+     * Construct a complete Rocket, if there is no other rocket to point to.
      *
-     * @param map The map this rocket is in.
+     * @param toMap The map this rocket is in.
      */
-    public Rocket(GameMap map) {
+    public Rocket(GameMap toMap) {
         super(new LoopingController(new StandStillBehaviour()), "ROCKET", DisplayCharacters.ROCKET, 6, 5);
-        this.map = map;
+        this.map = toMap;
         this.rocket = this;
         this.hasBody = true;
         this.hasEngine = true;
     }
-
+    /**
+     * Construct a Rocket, if there is no other rocket to point to. Has parameters on rocket completeness.
+     *
+     * @param map The map this rocket is in.
+     */
     public Rocket(GameMap map, boolean hasEngine, boolean hasBody) {
         super(new LoopingController(new StandStillBehaviour()), "ROCKET", DisplayCharacters.ROCKET, 6, 5);
         this.map = map;
@@ -103,6 +107,13 @@ public class Rocket extends Character {
     public void setEngine(boolean hasEngine) {
         this.hasEngine = hasEngine;
     }
+
+    public void setRocket(Actor rocket) { this.rocket = rocket; }
+
+    public void setMap(GameMap map) {
+        this.map = map;
+    }
+
 
     @Override
     public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {

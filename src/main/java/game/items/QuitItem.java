@@ -7,11 +7,11 @@ import game.actions.QuitAction;
 import game.actions.ShootWaterAction;
 
 /**
- * Quest Item. Engine of the rocket.
+ * Intrinsic Item. Gives the holder the ability to quit the game.
  */
 public class QuitItem extends Item {
     /**
-     * Create a WaterGun object
+     * Create a QuitItem object
      */
     public QuitItem() {
         super("Quit", DisplayCharacters.WATERGUN);

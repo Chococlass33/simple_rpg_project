@@ -25,7 +25,7 @@ public class OxygenDispenser extends Character {
      *
      */
     public OxygenDispenser() {
-        super(new LoopingController(new StandStillBehaviour()), "Oxygen Dispenser", DisplayCharacters.OXYGEN_DISPENSER, 4, 9999);
+        super(new LoopingController(new StandStillBehaviour()), "Oxygen & Spacesuit Dispenser", DisplayCharacters.OXYGEN_DISPENSER, 4, 9999);
     }
     @Override
     public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {

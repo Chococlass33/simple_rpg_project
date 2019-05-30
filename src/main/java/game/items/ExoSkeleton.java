@@ -1,5 +1,6 @@
 package game.items;
 
+import edu.monash.fit2099.engine.DropItemAction;
 import game.DisplayCharacters;
 import game.status.ArmouredStatus;
 import game.status.StatusEffect;
@@ -15,6 +16,7 @@ public class ExoSkeleton extends game.items.StatusItem {
      */
     public ExoSkeleton() {
         super("ExoSkeleton", DisplayCharacters.EXOSKELETON);
+        allowableActions.clear();
     }
 
     /**

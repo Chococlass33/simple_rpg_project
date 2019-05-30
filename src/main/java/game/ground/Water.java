@@ -9,13 +9,12 @@ import game.actions.FillWaterAction;
 import game.actions.UnlockedDoorAction;
 
 /**
- * A Locked Door. Has a color with a corresponding key. Cannot be passed. Can be unlocked using the UnlockedDoorAction by an actor with the right key.
+ * A water tile. Can't be walked on but can be used to fill the water gun.
  */
 public class Water extends Ground {
 
     /**
-     * Construct a LockedDoor. Using the parameter, you can create this door without incrementing the counter.
-     * Useful for actions that replace another ground object with this door.
+     * Constructor for water.
      */
     public Water() {
         super(DisplayCharacters.WATER);
