@@ -2,7 +2,6 @@ package game.status;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.MoveMapAction;
-import game.behaviours.StandStillBehaviour;
 import game.characters.Character;
 import game.items.OxygenTank;
 import game.items.Spacesuit;
@@ -40,7 +39,7 @@ public class VacuumStatus extends StatusEffect {
         Optional<Spacesuit> spacesuit = getSpaceSuit(subject);
         if (!spacesuit.isPresent()) {
             // Character doe snot have a space suit
-            display.println(subject.getName() + " can breathe without a space suit! They begin to suffocate!");
+            display.println(subject.getName() + " can't breathe without a space suit! Emergency Recall Activated!");
             return takeBreath(subject);
 
         } else {
@@ -74,7 +73,7 @@ public class VacuumStatus extends StatusEffect {
                 return Optional.empty();
 
             } else {
-                display.println(subject.getName() + "'s spacesuit has run out of oxygen. They begin to suffocate!");
+                display.println(subject.getName() + "'s spacesuit has run out of oxygen. Emergency Recall Activated!");
                 return returnAction;
             }
         }
@@ -89,7 +88,7 @@ public class VacuumStatus extends StatusEffect {
 
         Optional<Spacesuit> suit = getSpaceSuit(subject);
         if (!suit.isPresent() || !suit.get().breath()) {
-            return Optional.of(new MoveMapAction(map,rocket)); //TODO Replace with teleport action
+            return Optional.of(new MoveMapAction(map,rocket));
         }
         return Optional.empty();
     }

@@ -1,6 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
+import game.ground.Water;
 import game.items.*;
 import game.characters.*;
 import game.characters.Player;
@@ -17,8 +18,9 @@ public class Application{
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new RocketPad());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new RocketPad(), new Water());
 		GameMap gameMap;
+		GameMap moonMap;
 
 		List<String> map = Arrays.asList(
 				"................#......",
@@ -28,19 +30,35 @@ public class Application{
 				"....###########.###....",
 				".......................",
 				".......................",
+				"............~...........",
 				".......................",
 				".......................",
-				"...........?...........",
+				".......................");
+		List<String> moonLayout = Arrays.asList(
+				"....#..................",
+				"....#..................",
+				".####......#...........",
+				"..........###..........",
+				".........#####.........",
+				"..........###..........",
+				"...........#...........",
+				"............~...........",
+				".......................",
+				".......................",
 				".......................");
 		gameMap = new GameMap(groundFactory, map);
+		moonMap = new GameMap(groundFactory, moonLayout);
 		world.addMap(gameMap);
+		world.addMap(moonMap);
 
 		// Player
 		Player player = new Player("Player");
 		world.addPlayer(player, gameMap, 10, 0);
 
 		// Misc items
-		gameMap.addItem(new Warhammer(), 0,0);
+		gameMap.addItem(new Warhammer(), 1,1);
+		moonMap.addItem(new WaterGun(), 3, 1);
+		gameMap.addItem(new Spacesuit(), 10, 7);
 
 		// Enemies
 		Grunt grunt = new Grunt("Mongo", player);
@@ -60,6 +78,24 @@ public class Application{
 
 		OxygenDispenser dispenser = new OxygenDispenser();
 		gameMap.addActor(dispenser, 10, 6);
+
+		YugoMaxx boss = new YugoMaxx();
+		moonMap.addActor(boss, 10, 10);
+
+		Grunt grunt3 = new Grunt("Fain", player);
+		moonMap.addActor(grunt3, 5,5);
+
+		Ninja ninja2 = new Ninja("Jack", player);
+		moonMap.addActor(ninja2, 0,8);
+
+		Goon goon2 = new Goon("Max", player);
+		moonMap.addActor(goon2 ,8, 0);
+
+		Rocket rocket1 = new Rocket(moonMap, false, false);
+		gameMap.addActor(rocket1, 12, 9);
+
+		Rocket rocket2 = new Rocket(gameMap);
+		moonMap.addActor(rocket2, 0, 0);
 
 		// Keys
 		ninja.addItemToInventory(new Key(DisplayCharacters.colour.BLUE));

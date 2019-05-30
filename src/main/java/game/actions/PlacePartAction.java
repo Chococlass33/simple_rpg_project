@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.*;
 import game.characters.Rocket;
 import game.items.RocketBody;
 import game.items.RocketEngine;
-import game.ground.RocketPad;
 
 import java.util.List;
 
@@ -66,12 +65,11 @@ public class PlacePartAction extends Action {
         if (hasbody && hasengine) {
             tempstring += "The rocket is already finished.\n";
         }
-        Rocket theRocket = (Rocket) actor;
+        Rocket theRocket = rocket;
         theRocket.setBody(putbody);
         theRocket.setEngine(putengine);
         if (putbody && putengine) {
-            tempstring += "Woo, the rocket is finished.\nYou get in the rocket, and it explodes in a spectacular manner.\nTo be fair you put it together in like 5 minutes, craftsmanship isn't your forte.\nAs far as the game is concerned though, YOU'RE WINNER!\n";
-            map.removeActor(actor);
+            tempstring += "Woo, the rocket is finished.\nYou can now use the rocket to go to the moon";
         }
 
         return tempstring;

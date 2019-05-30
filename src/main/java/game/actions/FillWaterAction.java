@@ -45,7 +45,7 @@ public class FillWaterAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " checks the rocket pad.";
+        return actor + " fills the water gun.";
     }
 
     /**

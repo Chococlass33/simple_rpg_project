@@ -10,6 +10,7 @@ import game.actions.TakeItemAction;
 import game.behaviours.StandStillBehaviour;
 import game.controllers.LoopingController;
 import game.items.OxygenTank;
+import game.items.Spacesuit;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +36,7 @@ public class OxygenDispenser extends Character {
         } else {
             tempActions.add(new TakeItemAction(this, oxygenTank.get()));
         }
+        tempActions.add(new TakeItemAction(this, new Spacesuit()));
         return tempActions;
     }
 
