@@ -181,5 +181,14 @@ I, Lawson Meulman Declare that I find this WBA to be an acceptable distribution 
 I, Chee Chin Chan Declare that I find this WBA to be an acceptable distribution of work.
 ### Deviations from WBA
 #### Lawson
+* Additional Classes Built
+    * RequestOxygenTankAction.class
+    * Test Maps package
+    * StatusItem.class
+    * ExoSkeleton.class
+    * AdvancedAttackAction.class
+* CLasses Renamed
+    * VacuumEffect -> VacuumStatus
+    * ExoSkeletonStatus -> ArmouredStatus
 
 #### Chee
