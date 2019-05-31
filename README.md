@@ -13,10 +13,17 @@
 * "K" - Key
 * "-" - Unlocked Door
 * "+" - Locked Door
-* "?" - Rocket pad
+* "R" - Rocket
 * "B" - Rocket Body
 * "P" - Rocket Plans
 * "E" - Rocket Engine
 * "@" - Player
 * "Q" - Q
 * "W" - Warhammer weapon
+* "U" - Water gun
+* "X" - ExoSkeleton
+* "Y" - Yugo Maxx
+* "S" - Space suit
+* "O" - Oxygen Dispenser
+* "T" - Oxygen Tank
+* "~" - Water
