@@ -42,7 +42,7 @@ public class Application{
 				".........#####.........",
 				"..........###..........",
 				"...........#...........",
-				"............~...........",
+				"........................",
 				".......................",
 				".......................",
 				".......................");
@@ -56,7 +56,7 @@ public class Application{
 		world.addPlayer(player, gameMap, 10, 0);
 
 		// Misc items
-		gameMap.addItem(new Warhammer(), 1,1);
+		gameMap.addItem(new Warhammer(), 0,0);
 		moonMap.addItem(new WaterGun(), 3, 1);
 
 		// Enemies
