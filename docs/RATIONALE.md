@@ -71,3 +71,6 @@ We decided that the most simplest way to teleport the player back is for a rocke
 We could have made a specific parameter for the rocket to say if it points to a place with no oxygen.
 However since there are only 2 maps, it was simple enough to just say that if you're not suffocating, you're going to the moon, and vice versa.
 So now if you're suffocating, the MoveMap action is run, you will stop suffacating and the action will teleport you back to the rocket that made the status effect.
+
+## Advanced Attack
+The base attack action is fairly simple, an actor attacks another. A miss or hit is reported along with the damage. The advanced attack is better. It reports the amount of damage done to another character by doing a pre and post attack health check. This means we can have stats that affect damage taken. For example we implemented a defence stat on characters. The defence stat reduces incoming damage by the stat amount. The normal attack action reports how much damage is done based on the attack value. The advanced attack reports the damage done taking defence and other stats into account then reports any damage modifiers encountered. For example a character with defence that gets attacked will report the damage mitigated by its armour. 
