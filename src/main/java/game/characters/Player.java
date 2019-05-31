@@ -2,6 +2,8 @@ package game.characters;
 
 import game.DisplayCharacters;
 import game.controllers.PlayerController;
+import game.items.QuitItem;
+
 /**
  * A Player. Will be controlled by the user.
  */
@@ -13,5 +15,6 @@ public class Player extends Character {
      */
     public Player(String name) {
         super(new PlayerController(), name, DisplayCharacters.PLAYER, 1, 100, 5);
+        this.addItemToInventory(new QuitItem());
     }
 }

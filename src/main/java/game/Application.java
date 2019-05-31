@@ -42,7 +42,7 @@ public class Application{
 				".........#####.........",
 				"..........###..........",
 				"...........#...........",
-				"............~...........",
+				"........................",
 				".......................",
 				".......................",
 				".......................");
@@ -56,9 +56,8 @@ public class Application{
 		world.addPlayer(player, gameMap, 10, 0);
 
 		// Misc items
-		gameMap.addItem(new Warhammer(), 1,1);
+		gameMap.addItem(new Warhammer(), 0,0);
 		moonMap.addItem(new WaterGun(), 3, 1);
-		gameMap.addItem(new Spacesuit(), 10, 7);
 
 		// Enemies
 		Grunt grunt = new Grunt("Mongo", player);
@@ -91,21 +90,24 @@ public class Application{
 		Goon goon2 = new Goon("Max", player);
 		moonMap.addActor(goon2 ,8, 0);
 
-		Rocket rocket1 = new Rocket(moonMap, false, false);
+		Rocket rocket1 = new Rocket(gameMap, false, false);
 		gameMap.addActor(rocket1, 12, 9);
 
-		Rocket rocket2 = new Rocket(gameMap);
+		Rocket rocket2 = new Rocket(rocket1, gameMap, moonMap);
 		moonMap.addActor(rocket2, 0, 0);
 
 		// Keys
 		ninja.addItemToInventory(new Key(DisplayCharacters.colour.BLUE));
 		goon.addItemToInventory(new Key(DisplayCharacters.colour.GREEN));
+		grunt.addItemToInventory(new Key(DisplayCharacters.colour.RED));
 
 		// Doors
 		Ground door1 = new UnlockedDoor(DisplayCharacters.colour.GREEN);
 		Ground door2 = new LockedDoor(DisplayCharacters.colour.BLUE);
+		Ground door3 = new LockedDoor(DisplayCharacters.colour.RED);
 		gameMap.add(door1, gameMap.at(8, 3));
 		gameMap.add(door2, gameMap.at(15, 4));
+		moonMap.add(door3, moonMap.at(0, 2));
 
 		// Rocket Parts
 		gameMap.addItem(new RocketPlans(), 14,2);
@@ -117,7 +119,7 @@ public class Application{
 		world.run();
 		if(!player.isConscious())
 		{
-			System.out.println("RIP " + player);
+			System.out.println("Bad End. RIP " + player);
 		}
 	}
 }

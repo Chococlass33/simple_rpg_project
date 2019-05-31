@@ -6,7 +6,7 @@ import game.DisplayCharacters;
 import game.actions.ShootWaterAction;
 
 /**
- * Quest Item. Engine of the rocket.
+ * Quest Item. Used to destroy the exoskeleton.
  */
 public class WaterGun extends Item {
     private boolean filled;
@@ -15,8 +15,6 @@ public class WaterGun extends Item {
      */
     public WaterGun() {
         super("Water Gun", DisplayCharacters.WATERGUN);
-        allowableActions.clear();
-        allowableActions.add(new DropItemAction(this));
         allowableActions.add(new ShootWaterAction(this));
         filled = false;
     }

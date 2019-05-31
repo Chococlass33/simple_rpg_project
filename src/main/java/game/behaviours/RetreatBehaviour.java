@@ -36,6 +36,10 @@ public class RetreatBehaviour implements ActionFactory {
 
         Location here = map.locationOf(actor);
         Location there = map.locationOf(target);
+        if (there == null)
+        {
+            return null;
+        }
 
         int random = rand.nextInt(4);
         int currentDistance = distance(here, there);

@@ -192,3 +192,14 @@ I, Chee Chin Chan Declare that I find this WBA to be an acceptable distribution 
     * ExoSkeletonStatus -> ArmouredStatus
 
 #### Chee
+* Classes Renamed
+    * WaterPistol -> WaterGun
+    * MapTransfer -> MoveMapAction
+	* QuitGameAction -> QuitAction
+* Classes Removed
+	* GameVictoryAction.class - Due to the 1 action per action rule, we can't add the victory to the MoveMapAction when Yugo is in the inventory, so we just merged with the MoveMapAction.
+	* GameLossAction.class - There is no system in place to trigger the game loss action, so instead we just put a check to see if the lose condition is met when the game ends.
+	* UseRocketAction.class - Merged with the MoveMapAction
+* Classes Added
+	* QuitItem - Since the QuitAction couldn't be given directly to the player, we made an undroppable item to give the player that gives the action.
+	
